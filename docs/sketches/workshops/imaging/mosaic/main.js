@@ -43,9 +43,6 @@ function draw() {
             g = Math.floor(g / (mosaic_part_x*mosaic_part_y));
             b = Math.floor(b / (mosaic_part_x*mosaic_part_y));
 
-            //console.log(rgbToHex(r,g,b));
-
-            
             searchImage(rgbToHex(r,g,b), i*mosaic_part_x, j*mosaic_part_y, mosaic_part_x, mosaic_part_y);
         }
     }
@@ -76,8 +73,6 @@ function searchImage(color, x, y, w, h){
         img_color.resize(w, h);
         image(img_color, x, y);
     });
-    
-    
 }
 
 
