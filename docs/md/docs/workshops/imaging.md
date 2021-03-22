@@ -18,10 +18,15 @@
 
 #### Emboss, Blur, Outline and Sharpen
 
-> :P5 sketch=/docs/sketches/workshops/imaging/convolution.js, width=800, height=550
+<!-- > :P5 sketch=/docs/sketches/workshops/imaging/convolution.js, width=800, height=550 -->
 
 #### Top, Rigth, Bottom and Left Sobel
 
-> :P5 sketch=/docs/sketches/workshops/imaging/sobels.js, width=800, height=550
+> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=600, height=456
+
+
+#### Mosaic
+
+
 
 > :ToCPrevNext
