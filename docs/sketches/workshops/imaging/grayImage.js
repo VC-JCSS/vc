@@ -1,7 +1,7 @@
 let img;
 
 function preload() {
-    img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
+    img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda2.jpg");
 }
 
 function setup() {
