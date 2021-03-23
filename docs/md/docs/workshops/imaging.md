@@ -24,6 +24,23 @@
 
 > :P5 sketch=/docs/sketches/workshops/imaging/ColorHSL.js, width=800, height=550
 
+#### Gray Scale with CieLAB
+
+> :P5 sketch=/docs/sketches/workshops/imaging/ColorCieLAB.js, width=800, height=550
+
+#### Gray Scale with Intensity method
+
+> :P5 sketch=/docs/sketches/workshops/imaging/ColorIntensity.js, width=800, height=550
+
+#### Gray Scale with Gleam method
+
+> :P5 sketch=/docs/sketches/workshops/imaging/ColorGleam.js, width=800, height=550
+
+#### Gray Scale with luma method
+
+> :P5 sketch=/docs/sketches/workshops/imaging/ColorLuma.js, width=800, height=550
+
+
 ### Image Kernels
 
 
