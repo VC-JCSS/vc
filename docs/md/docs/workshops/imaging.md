@@ -22,10 +22,17 @@
 
 #### Top, Rigth, Bottom and Left Sobel
 
-> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=900, height=719
+#### Mosaic - Original
+> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/duck.js, width=800, height=640
+
+#### Mosaic - Result
+> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
 
 
-#### Mosaic
+
+
+
+
 
 
 
