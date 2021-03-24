@@ -24,4 +24,8 @@
 
 > :P5 sketch=/docs/sketches/workshops/imaging/sobels.js, width=800, height=550
 
+#### ASCII Art
+
+> :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/asciiArt.js
+
 > :ToCPrevNext
