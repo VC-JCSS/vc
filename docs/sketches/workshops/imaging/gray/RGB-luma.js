@@ -17,6 +17,10 @@ function draw() {
     oImg = createImage(img.width, img.height);
     sImg = createImage(img.width, img.height);
 
+
+    background(150);
+    image(img, 400, 0);
+    filter(GRAY);
     //Imagen original
     let d = pixelDensity();
     let npixels = 4 * (img.width * d) * (img.height * d);
@@ -35,8 +39,7 @@ function draw() {
 
     //FUncion gray de P5js
 
-    image(bImg, 400, 0);
-    filter(GRAY);
+
     //Luma
     oImg.loadPixels();
     for (let i = 0; i < npixels; i += 4) {

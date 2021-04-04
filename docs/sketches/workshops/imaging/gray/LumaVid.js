@@ -1,31 +1,38 @@
-let vid;
+let fingers;
 
 function preload() {
-    vid = createVideo("/vc/docs/sketches/fingers.webm");
+    fingers = createVideo("/vc/docs/sketches/fingers.webm");
 }
 
 function setup() {
     createCanvas(320, 240);
-    vid.loop();
-    vid.hide();
-    vid.volume(0);
+    //fingers.loop();
+    fingers.hide();
+
 }
 
 function draw() {
-    image(vid, 0, 0);
-    let d = pixelDensity();
-    let npixels = 4 * (width * d) * (height * d);
+    image(fingers,0,0);
+    fingers.loadPixels();
     loadPixels();
+    for (let x = 1; x < fingers.width; x++) {
+        for (let y = 1; y < fingers.height; y++) {
+            let index = 4 * (x + fingers.width * y);
 
-    for (let i = 0; i < npixels; i += 4) {
-        //let y = luma(pixels[i], pixels[i+1], pixels[i+2])
-        pixels[i] = pixels[i];
-        pixels[i + 1] = pixels[i + 1];
-        pixels[i + 2] = pixels[i + 2];
-        pixels[i + 3] = pixels[i+3];
+
+            let lum = luma(fingers.pixels[index], fingers.pixels[index + 1],fingers.pixels[index + 2])
+            pixels[index] = lum;
+            pixels[index + 1] = lum;
+            pixels[index + 2] = lum;
+            pixels[index + 3] = fingers.pixels[index + 3];
+        }
     }
-    updatePixels();
 
+    updatePixels();
+}
+
+function mousePressed() {
+    fingers.loop();
 }
 
 function gammaCorrected(pix) {
@@ -59,3 +66,4 @@ function sRGBtoLin(colorChannel) {
         return Math.pow((( colorChannel + 0.055)/1.055),2.4);
     }
 }
+
