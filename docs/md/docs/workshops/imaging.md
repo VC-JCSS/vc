@@ -1,4 +1,4 @@
-<!-- # Image and video processing
+ # Image and video processing
 
 
 
@@ -49,7 +49,7 @@ Este es el algoritmo de escala de grises para los programadores novatos. Esta f�
 
 Para aplicarlo tomamos el RGB de cada pixel y lo dividimos entre 3, como muestra el siguiente código
 
-```
+``` js
 sImg.loadPixels();
 for (let i = 0; i < npixels; i += 4) {
     let gray = (img.pixels[i] + img.pixels[i + 1] + img.pixels[i + 2]) / 3;
@@ -73,7 +73,7 @@ Convertir el pixel RGB a decimal (0.0 a 1.0)
 
 Para ello usamos el siguiente código:
 
-```
+``` js
 let vR = r / 255;
 let vG = g / 255;
 let vB = b / 255;
@@ -89,7 +89,7 @@ Donde V´ es el canal R, G o B codificado en gamma de RGB.
 
 Esto se realizó con las siguientes lineas del código:
 
-```
+``` js
 function sRGBtoLin(colorChannel) {
     if ( colorChannel <= 0.04045 ) {
         return colorChannel / 12.92;
@@ -105,13 +105,13 @@ Para encontrar la luminancia aplicamos los coeficientes estándar para sRGB:
 
 ****imagen de formula luminancia****
 
-```
+``` js
 let Y = ((rY * rLin) + (gY * gLin) + (bY * bLin));
 ```
 
 Adicionalmente recorremos todos los pixeles y aplicando la formula anteriormente mostrada.
 
-```
+``` js
 oImg.loadPixels();
     for (let i = 0; i < npixels; i += 4) {
         let y = luma(img.pixels[i], img.pixels[i+1],img.pixels[i+2])
@@ -153,7 +153,9 @@ Se muestra aplicando luma en video
 
 
 
-
+<br/>
+<br/><br/>
+<br/>
 
 
 
@@ -501,7 +503,6 @@ Utilizando este mismo código, cambiando únicamente el kernel por el Top Sobel,
 
 El kernel es un método de procesamiento de imágenes muy versátil, pues no solo sirve para aplicar filtros a las imágenes, sino que también permiten la obtención de carácteristicas de una imagen, facilitando así el estudio de las imagenes, y su aplicación en otras áreas que hacen uso de imágenes. Finalmente, para un trabajo futuro este tema se puede profundizar y desarrollar con la investigación y experimentación sobre cada uno de los filtros y la razón por la cual cada uno de ellos genera el debido efecto.
 
- -->
 
 
 
@@ -523,6 +524,9 @@ El kernel es un método de procesamiento de imágenes muy versátil, pues no sol
 
 
 
+<br/>
+<br/><br/>
+<br/>
 
 
 
@@ -790,7 +794,7 @@ A continuación se muestra una imagen y el resultado al aplicar el algoritmo par
 
 > :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
 
-#### Conclusions & Future Work
+### Conclusions & Future Work
 
 Para finalizar se concluye que el mecanismo de obtención del color denomínate resulta simple, sencillo, efectivo y elegante, por otro lado, se destaca que fue inviable hacer uso de una API, pero la alternativa de estandarizar los colores en el formato HTML y el uso de la distancia delta para discretizar resulta altamente efectivo. Como futuro trabajo se proponen las siguientes ideas.
 
@@ -854,7 +858,8 @@ Para finalizar se concluye que el mecanismo de obtención del color denomínate 
 
 
 
-
+<br/>
+<br/>
 
 
 
@@ -878,7 +883,7 @@ El bloque a analizar puede ser de longitud variable, pero deben tenerse en cuent
 
 Se tienen variables globales importantes como blockSize, que define el tamaño del bloque a analizar.
 
-```
+``` js
 let img;
 let v = 1.0 / 9.0;
 let blockSize = 3;
@@ -912,7 +917,7 @@ function draw() {
 ```
 La función scanBlock toma un bloque individual de datos y lo envía a la función patternDef, para definir su nivel de brillo y así, asignar un ASCII correspondiente.
 
-```
+``` js
 function scanBlock(x, y) {
     let sizeDef = 4 * blockSize;
     let blockInformation = new Array(4 * blockSize);
@@ -933,7 +938,7 @@ function scanBlock(x, y) {
 ```
 
 La función patternDef toma un bloque de información y lo analiza. Encuentra el brillo promedio del bloque y envía el resultado estandarizado (un valor entre 0 y 1) a la funcion selectCharacter, que se encargará de asignar un caracter a cada bloque analizado.  
-```
+``` js
 function patternDef(blockInformation) {
     let brillos = [];
     let suma = 0;
@@ -957,7 +962,7 @@ function patternDef(blockInformation) {
 
 La función selectCharacter recibe la intensidad de un bloque previamente analizado, y selecciona un ASCII adecuado para el ASCII art. Esta función es de mucha utilidad, ya que sin ella los caracteres no podrían representar la opacidad o profundidad de la imagen procesada.
 
-```
+``` js 
 function selectCharacter(result) {
     if (result > 0 && result <= 0.1) {
         return "▓";
