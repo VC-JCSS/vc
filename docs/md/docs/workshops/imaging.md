@@ -1,28 +1,32 @@
 # Image and video processing
 
-## Workshop March 10th
 
-### Load and Deploy image
+## Load and Deploy image
 
 > :P5 sketch=/docs/sketches/workshops/imaging/loadImage.js, width=800, height=550
 
-### Negative of an image
+## Negative of an image
 
 > :P5 sketch=/docs/sketches/workshops/imaging/negativeImage.js, width=800, height=550
+
 
 ### Escala de grises
 
 #### Problem Statement
 
+
 Aplicar la conversión a escala de grises en imágenes y videos utilizando la herramienta p5.js.
 
 #### Background
 
+
 En fotografía digital e imágenes generadas por computadora, una escala de grises o imagen es aquella en la que el valor de cada píxel es una sola muestra que representa solo una cantidad de luz; es decir, lleva solo información de intensidad. Las imágenes en escala de grises, una especie de monocromo en blanco y negro o gris, se componen exclusivamente de tonos de gris. El contraste varía desde el negro en la intensidad más débil hasta el blanco en la más fuerte.
+
 
 Las imágenes en escala de grises son distintas de las imágenes en blanco y negro de dos tonos de un bit, que, en el contexto de las imágenes por computadora, son imágenes con solo dos colores: blanco y negro (también llamadas imágenes de dos niveles o binarias). Las imágenes en escala de grises tienen muchos tonos de gris en el medio.
 
 #### Code & Results
+
 
 **_Filtros_**
 
@@ -130,21 +134,519 @@ Se muestra aplicando luma en video
 
 > :P5 sketch=/docs/sketches/workshops/imaging/gray/RGB-Vid.js, width=320, height=240
 
-### Image Kernels
 
-### Mosaic - Images
-#### Original
+## Image Kernels
 
-:P5 sketch=/docs/sketches/workshops/imaging/mosaic/duck.js, width=800, height=640
+### Problem Statement
 
-#### Mosaic
+Aplicar máscaras de convolución (O Kenels) en imágenes y videos utilizando la herramienta p5.js. 
 
- :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
+### Background
+
+El kernel de una imagen es una pequeña matriz cuadrada de tamaño impar que, por medio de la convolución entre el kernel y la imagen, se utiliza para aplicar distintos efectos en la imagen. La convolución es el proceso en el cual se suma cada píxel de la imagen con sus vecinos locales, teniendo en cuenta los pesos indicados por el kernel. De esta forma, si tenemos la matriz de píxeles:
+
+|  |  |  |
+| :----: | :----: | :----: |
+| 149 | 191 | 190 |
+| 164 | 195 | 200 |
+| 150 | 185 | 194 |
+
+y el kernel:
+
+|  |  |  |
+| :----: | :----: | :----: |
+| 0 | -1 | 0 |
+| -1 | 5 | -1 |
+| 0 | -1 | 0 |
+
+Y deseamos obtener la convolución del píxel 195, obtenemos el resultado: (191 x -1) + (164 x -1) + (195 x 5) + (200 x -1) + (185 x -1) = 235. Así, para aplicar el filtro deseado, se toma cada uno de los píxeles de la imagen original y se reemplazan por el píxel obtenido al realizar su respectiva convolución con el kernel.
+
+### Code & Results
+
+#### Filters
+
+Algunos de los filtros que se pueden lograr, con sus respectivos kernels son:
+
+* Emboss: Filtro que da la ilusión de profundidad y enfatiza la diferencia entre pixeles.
+|  |  |  |
+| :----: | :----: | :----: |
+| -2 | -1 | 0 |
+| -1 | 1 | 1 |
+| 0 | 1 | 2 |
+* Blur: Filtro que desenfatiza las diferencias entre los pixeles, logrando un efecto borroso en la imagen.
+|  |  |  |
+| :----: | :----: | :----: |
+| 0.11 | 0.11 | 0.11 |
+| 0.11 | 0.11 | 0.11 |
+| 0.11 | 0.11 | 0.11 |
+* Outline: Filtro que resalta diferencias de intensidad importantes entre los pixeles. De esta forma, un píxel cuyos píxeles vecinos tengan una intensidad similar, se verá negro al aplicar el filtro; mientras que un un píxel cuyos vecinos tengan una intensidad bastante diferente, se verá blanco.
+|  |  |  |
+| :----: | :----: | :----: |
+| -1 | -1 | -1 |
+| -1 | 8 | -1 |
+| -1 | -1 | -1 |
+* Sharpen: Filtro que enfatiza las diferencias entre los píxeles adyacentes. Con esto, se obtiene una imagen más vívida.
+|  |  |  |
+| :----: | :----: | :----: |
+| 0 | -1 | 0 |
+| -1 | 5 | -1 |
+| 0 | -1 | 0 |
+
+Para aplicar estos kernels, utilizamos el siguiente código:
+
+```js | convolution.js
+let img;
+let v = 1.0 / 9.0;
+
+let emboss = [
+    [-2, -1, 0],
+    [-1, 1, 1],
+    [0, 1, 2]
+];
+
+let blurM = [
+    [v, v, v],
+    [v, v, v],
+    [v, v, v]
+];
+
+let outline = [
+    [-1, -1, -1],
+    [-1, 8, -1],
+    [-1, -1, -1]
+];
+
+let sharpen = [
+    [0, -1, 0],
+    [-1, 5, -1],
+    [0, -1, 0]
+];
+
+function preload() {
+    img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
+}
+
+function setup() {
+    createCanvas(800, 550);
+    img.resize(400, 275);
+    noLoop();
+}
+
+function draw() {
+
+    img.loadPixels();
+
+    eImg = createImage(img.width, img.height);
+    bImg = createImage(img.width, img.height);
+    oImg = createImage(img.width, img.height);
+    sImg = createImage(img.width, img.height);
+
+    eImg.loadPixels();
+    for (let x = 1; x < img.width; x++) {
+        for (let y = 1; y < img.height; y++) {
+            let c = convolution(x, y, emboss);
+            let index = 4 * (x + img.width * y);
+
+            eImg.pixels[index] = red(c);
+            eImg.pixels[index + 1] = green(c);
+            eImg.pixels[index + 2] = blue(c);
+            eImg.pixels[index + 3] = alpha(c);
+        }
+    }
+    eImg.updatePixels();
+    image(eImg, 0, 0);
+
+    bImg.loadPixels();
+    for (let x = 1; x < img.width; x++) {
+        for (let y = 1; y < img.height; y++) {
+            let c = convolution(x, y, blurM);
+            let index = 4 * (x + img.width * y);
+
+            bImg.pixels[index] = red(c);
+            bImg.pixels[index + 1] = green(c);
+            bImg.pixels[index + 2] = blue(c);
+            bImg.pixels[index + 3] = alpha(c);
+        }
+    }
+    bImg.updatePixels();
+    image(bImg, 400, 0);
+
+
+    oImg.loadPixels();
+    for (let x = 1; x < img.width; x++) {
+        for (let y = 1; y < img.height; y++) {
+            let c = convolution(x, y, outline);
+            let index = 4 * (x + img.width * y);
+
+            oImg.pixels[index] = red(c);
+            oImg.pixels[index + 1] = green(c);
+            oImg.pixels[index + 2] = blue(c);
+            oImg.pixels[index + 3] = alpha(c);
+        }
+    }
+    oImg.updatePixels();
+    image(oImg, 0, 275);
+
+    sImg.loadPixels();
+    for (let x = 1; x < img.width; x++) {
+        for (let y = 1; y < img.height; y++) {
+            let c = convolution(x, y, sharpen);
+            let index = 4 * (x + img.width * y);
+
+            sImg.pixels[index] = red(c);
+            sImg.pixels[index + 1] = green(c);
+            sImg.pixels[index + 2] = blue(c);
+            sImg.pixels[index + 3] = alpha(c);
+        }
+    }
+    sImg.updatePixels();
+    image(sImg, 400, 275);
+}
+
+function convolution(x, y, matrix) {
+    let rtotal = 0;
+    let gtotal = 0;
+    let btotal = 0;
+
+    for (kx = -1; kx <= 1; kx++) {
+        for (ky = -1; ky <= 1; ky++) {
+            let xpos = x + kx;
+            let ypos = y + ky;
+            let r = 0;
+            let g = 0;
+            let b = 0;
+
+            if ((xpos >= 0 && xpos < img.width) && (ypos >= 0 || ypos < img.height)) {
+                let index = 4 * (xpos + img.width * ypos);
+                r = img.pixels[index];
+                g = img.pixels[index + 1];
+                b = img.pixels[index + 2];
+            }
+
+            rtotal += matrix[kx + 1][ky + 1] * r;
+            gtotal += matrix[kx + 1][ky + 1] * g;
+            btotal += matrix[kx + 1][ky + 1] * b;
+        }
+    }
+
+    rtotal = constrain(rtotal, 0, 255);
+    gtotal = constrain(gtotal, 0, 255);
+    btotal = constrain(btotal, 0, 255);
+
+    return color(rtotal, gtotal, btotal);
+}
+```
+
+Y obtenemos el siguiente resultado:
+
+> :P5 sketch=/docs/sketches/workshops/imaging/kernel/convolution.js, width=800, height=550
+
+#### Sobels
+
+Sin embargo, la aplicación de filtros no es el único uso que se le da a los kernels, estos también se utilizan para la "Extracción de características" de una imagen. Sobel, por ejemplo, es un tipo de kernel que se utiliza en el procesamiento de imágenes, especialmente en algoritmos de detección de bordes. Existen 4 tipo de sobel diferentes:
+
+* Top Sobel: Se utiliza para mostrar únicamente las diferencias entre un píxel con los pixeles superiores adyacentes.
+|  |  |  |
+| :----: | :----: | :----: |
+| 1 | 2 | 1 |
+| 0 | 0 | 0 |
+| -1 | -2 | -1 |
+* Rigth Sobel: Se utiliza para mostrar únicamente las diferencias entre un píxel con los pixeles posteriores adyacentes.
+|  |  |  |
+| :----: | :----: | :----: |
+| -1 | 0 | 1 |
+| -2 | 0 | 2 |
+| -1 | 0 | 1 |
+* Bottom Sobel: Se utiliza para mostrar únicamente las diferencias entre un píxel con los pixeles inferiores adyacentes.
+|  |  |  |
+| :----: | :----: | :----: |
+| -1 | -2 | -1 |
+| 0 | 0 | 0 |
+| 1 | 2 | 1 |
+* Left Sobel: Se utiliza para mostrar únicamente las diferencias entre un píxel con los pixeles anteriores adyacentes.
+|  |  |  |
+| :----: | :----: | :----: |
+| 1 | 0 | -1 |
+| 2 | 0 | -2 |
+| 1 | 0 | -1 |
+
+Utilizando el mismo código mostrado anteriormente, pero cambiado los valores de cada una de las matrices, obtenemos lo siguiente:
+
+> :P5 sketch=/docs/sketches/workshops/imaging/kernel/sobels.js, width=800, height=550
+
+#### Kernels on Videos
+
+Finalmente, el kernel también puede ser utilizado en videos. De esta forma, aplicando el siguiente código:
+
+```js | convolutionVideo.js
+let fingers;
+
+let kernel = [
+    [-1, -1, -1],
+    [-1, 8, -1],
+    [-1, -1, -1]
+];
+
+function preload() {
+    fingers = createVideo("/vc/docs/sketches/fingers.webm");
+}
+
+function setup() {
+    createCanvas(320, 240);
+    fingers.loop();
+    fingers.hide();
+    fingers.volume(0);
+}
+
+function draw() {
+
+    fingers.loadPixels();
+    loadPixels();
+
+    for (let x = 1; x < fingers.width; x++) {
+        for (let y = 1; y < fingers.height; y++) {
+
+            let c = convolution(x, y, kernel);
+            let index = 4 * (x + fingers.width * y);
+
+            pixels[index] = red(c);
+            pixels[index + 1] = green(c);
+            pixels[index + 2] = blue(c);
+            pixels[index + 3] = alpha(c);
+        }
+    }
+
+    updatePixels();
+}
+
+function convolution(x, y, matrix) {
+    let rtotal = 0;
+    let gtotal = 0;
+    let btotal = 0;
+
+    for (kx = -1; kx <= 1; kx++) {
+        for (ky = -1; ky <= 1; ky++) {
+            let xpos = x + kx;
+            let ypos = y + ky;
+            let r = 0;
+            let g = 0;
+            let b = 0;
+
+            if ((xpos >= 0 && xpos < fingers.width) && (ypos >= 0 || ypos < fingers.height)) {
+                let index = 4 * (xpos + fingers.width * ypos);
+                r = fingers.pixels[index];
+                g = fingers.pixels[index + 1];
+                b = fingers.pixels[index + 2];
+            }
+
+            rtotal += matrix[kx + 1][ky + 1] * r;
+            gtotal += matrix[kx + 1][ky + 1] * g;
+            btotal += matrix[kx + 1][ky + 1] * b;
+        }
+    }
+
+    rtotal = constrain(rtotal, 0, 255);
+    gtotal = constrain(gtotal, 0, 255);
+    btotal = constrain(btotal, 0, 255);
+
+    return color(rtotal, gtotal, btotal);
+}
+```
+Obtenemos el video con el filtro Outline:
+
+> :P5 sketch=/docs/sketches/workshops/imaging/kernel/convolutionVideo.js, width=320, height=240
+
+Utilizando este mismo código, cambiando únicamente el kernel por el Top Sobel, obtenemos el video:
+
+> :P5 sketch=/docs/sketches/workshops/imaging/kernel/sobelsVideo.js, width=320, height=240
+
+### Conclusions & Future Work
+
+El kernel es un método de procesamiento de imágenes muy versátil, pues no solo sirve para aplicar filtros a las imágenes, sino que también permiten la obtención de carácteristicas de una imagen, facilitando así el estudio de las imagenes, y su aplicación en otras áreas que hacen uso de imágenes. Finalmente, para un trabajo futuro este tema se puede profundizar y desarrollar con la investigación y experimentación sobre cada uno de los filtros y la razón por la cual cada uno de ellos genera el debido efecto.
 
 
 
-#### ASCII Art
 
- :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/asciiArt.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Mosaic - Images
+### Original
+
+> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/duck.js, width=800, height=640
+
+### Mosaic
+
+> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
+
+#### General Explicación
+El mosaico generado consiste en recrear una imagen a partir de pequeñas imágenes, para crear una mayor concordancia las pequeñas imágenes pertenecen a la misma temática de la imagen original, en este caso aves. A continuación, se explica el proceso que permitió la creación de la pieza. 
+
+#### Ideas Primarias
+Las primeras ideas que se plantearon para la creación del mosaico fueron 2 principalmente:
+
+* Primero se determino que la mejor manera para crear el mosaico consistía en dividir la imagen en pequeñas cuadriculas cuyo tamaño fuera una potencia de 2 (por ejemplo, 8x8 o 16x16), una vez se tienen estas cuadriculas se haya el color dominante de cada cuadricula, para esto basto con hallar el promedio de cada uno los canales (trabajando en modo rgb) de los colores de cada uno de los pixeles de la cuadricula, esto permitió obtener un color domínate de cada uno de las cuadriculas. 
+
+* Como segunda idea ya teniendo el color predominante de cada una de las cuadriculas, se planteo el uso de una API que se encargara de proveer imágenes para cada una de las cuadriculas con su respectivo color predominante, este proceso funciono en pequeña escala, pero cuando se intentó realizar el proceso con una imagen de tamaño real, se superaron fácilmente el limite de las API, esto conllevo a descartar esta segunda idea y buscar otras alternativas. 
+
+#### HTML Colores y Distancia Delta
+Dado que era imposible conseguir una imagen para cada uno de los colores, se busco alguna manera de estandarizar la paleta, en esta búsqueda se encontró la lista de colores estándares proveídos por **HTML**, dicha lista esta conformada por 140 colores y representan una abstracción bastante completa de la paleta, con esta lista de colores mucho más reducida se busco una imagen para cada uno de los colores. 
+
+En este punto se tenía 140 imágenes para cada uno los colores estandarizados por HTML, pero los colores predominantes de cada uno de las cuadriculas aún no habían sido estandarizado, para esto se hizo uso del concepto de **distancia delta**, dicha distancia expresa de manera numérica la diferencia entre 2 colores,  es decir si x y z son el mismo color su distancia será cero, con este concepto en mente se tomo un cuadricula cuyo color predomínate es el color **c** y se halló la distancia delta del color c con cada uno de los 140 colores y se selecciono el color con la mejor distancia, se tomó la imagen correspondiente a ese color y se construyó el mosaico.
+
+
+#### Conclusions & Future Work
+
+* Si bien la distancia delta es una medida efectiva no deja de ser una simple distancia euclidiana, una mejora en el trabajo podría ser trabajar una medida más precisa de acuerdo con el contexto. 
+
+* Si bien la mayoría de APIs en su capa gratuita tienen unos limites bastantes bajos en relación con lo solicitado por el ejercicio, se podría buscar una solución de pago o usar herramientas de scraping para la creación de una podría API. 
+
+
+
+### ASCII Art
+
+#### Problem statement 
+Conversión de la imagen a ascii art. Nota: Se puede emplear p5.quadrille.js.
+
+#### Background
+
+El arte ASCII se ha utilizado cuando no es posible la transmisión o la impresión de imágenes en las configuraciones de equipos computarizados, tales como maquinillas, teletipos y equipos de visualización (consolas y terminales) que no cuentan con tarjetas de proceso gráfico. El arte ASCII ha servido como lenguaje fuente para representar logos de compañías y productos, para crear diagramas procedimentales de flujo de operaciones y también en el diseño de los primeros videojuegos.
+
+
+Para analizar de manera satisfactoria una imagen y convertirla a ASCII art, se debe analizar la imagen por regiones.
+El bloque a analizar puede ser de longitud variable, pero deben tenerse en cuenta distintos factores, como el tamaño de los simbolos ASCII o la densidad de la imagen.
+ 
+#### Code & Results
+
+Se tienen variables globales importantes como blockSize, que define el tamaño del bloque a analizar.
+
+```
+let img;
+let v = 1.0 / 9.0;
+let blockSize = 3;
+let count = 500;
+
+function preload() {
+    img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
+}
+
+function setup() {
+    createCanvas(800, 550);
+    img.resize(800, 550);
+    noLoop();
+}
+
+function draw() {
+    background(255);
+    //image(img, 0, 0);
+
+    img.loadPixels();
+
+    let d = pixelDensity();
+    let npixels = 4 * (width * d) * (height * d);
+    //text(pixels.length, 200, 200);
+    for (let x = 0; x < width; x += blockSize) {
+        for (let y = 0; y < height; y += blockSize) {
+            scanBlock(x, y);
+        }
+    }
+}
+```
+La función scanBlock toma un bloque individual de datos y lo envía a la función patternDef, para definir su nivel de brillo y así, asignar un ASCII correspondiente.
+
+```
+function scanBlock(x, y) {
+    let sizeDef = 4 * blockSize;
+    let blockInformation = new Array(4 * blockSize);
+    let index = 0;
+    while (index < blockSize) {
+        let startPosition = (x + y * width) * 4;
+        blockInformation[index * 4] = img.pixels[startPosition];
+        blockInformation[index * 4 + 1] = img.pixels[startPosition + 1];
+        blockInformation[index * 4 + 2] = img.pixels[startPosition + 2];
+        blockInformation[index * 4 + 3] = img.pixels[startPosition + 3];
+        index++;
+    }
+    let res = patternDef(blockInformation);
+    textSize(10);
+    text(res, x, y);
+
+}
+```
+
+La función patternDef toma un bloque de información y lo analiza. Encuentra el brillo promedio del bloque y envía el resultado estandarizado (un valor entre 0 y 1) a la funcion selectCharacter, que se encargará de asignar un caracter a cada bloque analizado.  
+```
+function patternDef(blockInformation) {
+    let brillos = [];
+    let suma = 0;
+    for (let i = 0; i < blockInformation.length; i += 4) {
+        let br =
+            blockInformation[i] * 0.2126 +
+            blockInformation[i + 1] * 0.7152 +
+            blockInformation[i + 2] * 0.0722;
+        brillos.push(br);
+    }
+
+    brillos.forEach((element) => {
+        suma += element;
+    });
+    let promedio = suma / brillos.length;
+    let result = promedio / 255;
+    return selectCharacter(result);
+
+}
+```
+
+La función selectCharacter recibe la intensidad de un bloque previamente analizado, y selecciona un ASCII adecuado para el ASCII art. Esta función es de mucha utilidad, ya que sin ella los caracteres no podrían representar la opacidad o profundidad de la imagen procesada.
+
+```
+function selectCharacter(result) {
+    if (result > 0 && result <= 0.1) {
+        return "▓";
+    } else if (result > 0.1 && result <= 0.2) {
+        return "▒";
+    } else if (result > 0.2 && result <= 0.3) {
+        return "#";
+    } else if (result > 0.3 && result <= 0.4) {
+        return "@";
+    } else if (result > 0.4 && result <= 0.5) {
+        return "%";
+    } else if (result > 0.5 && result <= 0.6) {
+        return "E";
+    } else if (result > 0.6 && result <= 0.7) {
+        return "=";
+    } else if (result > 0.7 && result <= 0.8) {
+        return "0";
+    } else if (result > 0.8 && result <= 0.9) {
+        return "/";
+    } else if (result > 0.9 && result <= 1) {
+        return ".";
+    }
+}
+```
+
+El resultado se muestra a continuación:
+> :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/asciiArt.js
+
+
+
+
+#### Conclusions & future work
+
+Se concluye que el análisis por medio de bloques de información y brillo puede ser de utilidad para la representación fiel de una imagen, pero en algunos casos pueden requerirse distintos algoritmos para medir le intensidad, ya que esta puede verse distorsionada y no ser una medida a representar fiable.
+Como trabajo futuro se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
 
 > :ToCPrevNext
