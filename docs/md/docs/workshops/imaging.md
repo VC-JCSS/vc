@@ -1,26 +1,175 @@
 # Image and video processing
 
 
+
+
+
 ## Load and Deploy image
 
 > :P5 sketch=/docs/sketches/workshops/imaging/loadImage.js, width=800, height=550
+
+
+
 
 ## Negative of an image
 
 > :P5 sketch=/docs/sketches/workshops/imaging/negativeImage.js, width=800, height=550
 
-## Gray Scale
-
-### Gray Scale with luminosity, intensity, gleam and luma
-Grayscale using luminosity method at top left, intensity method at top right, gleam method at bottom left and luma method at bottom right
-
-> :P5 sketch=/docs/sketches/workshops/imaging/gray/grayImage.js, width=800, height=550
 
 
-### Gray Scale with HSL, HSV, LUMA
-Grayscale using HSL method at top left, HSV method at top right, CieLAB method at bottom left and ?? method at bottom right
 
-> :P5 sketch=/docs/sketches/workshops/imaging/gray/grayImage2.js, width=800, height=550
+
+
+
+
+### Escala de grises
+
+#### Problem Statement
+
+
+Aplicar la conversión a escala de grises en imágenes y videos utilizando la herramienta p5.js.
+
+#### Background
+
+
+En fotografía digital e imágenes generadas por computadora, una escala de grises o imagen es aquella en la que el valor de cada píxel es una sola muestra que representa solo una cantidad de luz; es decir, lleva solo información de intensidad. Las imágenes en escala de grises, una especie de monocromo en blanco y negro o gris, se componen exclusivamente de tonos de gris. El contraste varía desde el negro en la intensidad más débil hasta el blanco en la más fuerte.
+
+
+Las imágenes en escala de grises son distintas de las imágenes en blanco y negro de dos tonos de un bit, que, en el contexto de las imágenes por computadora, son imágenes con solo dos colores: blanco y negro (también llamadas imágenes de dos niveles o binarias). Las imágenes en escala de grises tienen muchos tonos de gris en el medio.
+
+#### Code & Results
+
+
+**_Filtros_**
+
+**Promedio RGB**
+
+Este es el algoritmo de escala de grises para los programadores novatos. Esta fórmula genera un razonablemente agradable equivalente en escala de grises, su simplicidad hace que sea fácil de implementar y optimizar. Sin embargo, esta fórmula no está exenta de defectos mientras rápido y sencillo, que hace un trabajo pobre de representar tonos de gris en relación con la forma en que los seres humanos perciben la luminosidad (brillo).
+[http://ilapep.mx/g1/color_to_gray_scale.pdf]
+
+Para aplicarlo tomamos el RGB de cada pixel y lo dividimos entre 3, como muestra el siguiente código
+
+```
+sImg.loadPixels();
+for (let i = 0; i < npixels; i += 4) {
+    let gray = (img.pixels[i] + img.pixels[i + 1] + img.pixels[i + 2]) / 3;
+    sImg.pixels[i] = gray;
+    sImg.pixels[i + 1] = gray;
+    sImg.pixels[i + 2] = gray;
+    sImg.pixels[i + 3] = img.pixels[i + 3];
+}
+sImg.updatePixels();
+```
+
+**Luma**
+
+luma representa el brillo de una imagen (la parte "blanco y negro" o acromática de la imagen). Por lo general, la luminancia se empareja con la crominancia. Luma representa la imagen acromática, mientras que los componentes cromáticos representan la información de color. Los sistemas de video pueden almacenar y transmitir información cromática a una resolución más baja, optimizando los detalles percibidos en un ancho de banda particular.
+
+Para encontrar el Luma seguimos una serie de pasos:
+
+*Paso 1*
+
+Convertir el pixel RGB a decimal (0.0 a 1.0)
+
+Para ello usamos el siguiente código:
+
+```
+let vR = r / 255;
+let vG = g / 255;
+let vB = b / 255;
+```
+
+*Paso 2*
+
+Convertir un RGB codificado (paso 1) con gamma a un valor lineal. RGB (estándar de computadora), por ejemplo, requiere una curva de potencia de aproximadamente V ^ 2.2, aunque la transformación "precisa" es:
+
+****imagen de transformación lineal****
+
+Donde V´ es el canal R, G o B codificado en gamma de RGB.
+
+Esto se realizó con las siguientes lineas del código:
+
+```
+function sRGBtoLin(colorChannel) {
+    if ( colorChannel <= 0.04045 ) {
+        return colorChannel / 12.92;
+    } else {
+        return Math.pow((( colorChannel + 0.055)/1.055),2.4);
+    }
+}
+```
+
+*Paso 3*
+
+Para encontrar la luminancia aplicamos los coeficientes estándar para sRGB:
+
+****imagen de formula luminancia****
+
+```
+let Y = ((rY * rLin) + (gY * gLin) + (bY * bLin));
+```
+
+Adicionalmente recorremos todos los pixeles y aplicando la formula anteriormente mostrada.
+
+```
+oImg.loadPixels();
+    for (let i = 0; i < npixels; i += 4) {
+        let y = luma(img.pixels[i], img.pixels[i+1],img.pixels[i+2])
+        oImg.pixels[i] = y;
+        oImg.pixels[i + 1] = y;
+        oImg.pixels[i + 2] = y;
+        oImg.pixels[i + 3] = img.pixels[i+3];
+    }
+oImg.updatePixels();
+```
+
+A continuación se muestran los resultados obtenidos aplicando las funciones anteriormente mencionadas.
+
+### Promedio RGB y Luma en imagen
+
+Arriba izquierda se muestra la imagen original, arriba derecha se muestra con la aplicación de la función predeterminada de funcion p5js, abajo izquierda se muestra aplicando luma, abajo derecha se muestra aplicando el promedio RGB
+https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+
+> :P5 sketch=/docs/sketches/workshops/imaging/gray/RGB-luma.js, width=800, height=550
+
+### Promedio RGB en video
+
+Se muestra aplicando el promedio RGB en video para un video
+
+https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+
+> :P5 sketch=/docs/sketches/workshops/imaging/gray/LumaVid.js, width=320, height=240
+
+### Promedio luma en video
+
+Se muestra aplicando luma en video
+
+> :P5 sketch=/docs/sketches/workshops/imaging/gray/RGB-Vid.js, width=320, height=240
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Image Kernels
@@ -352,6 +501,32 @@ Utilizando este mismo código, cambiando únicamente el kernel por el Top Sobel,
 
 El kernel es un método de procesamiento de imágenes muy versátil, pues no solo sirve para aplicar filtros a las imágenes, sino que también permiten la obtención de carácteristicas de una imagen, facilitando así el estudio de las imagenes, y su aplicación en otras áreas que hacen uso de imágenes. Finalmente, para un trabajo futuro este tema se puede profundizar y desarrollar con la investigación y experimentación sobre cada uno de los filtros y la razón por la cual cada uno de ellos genera el debido efecto.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Mosaic - Images
 ### Original
 
@@ -361,10 +536,197 @@ El kernel es un método de procesamiento de imágenes muy versátil, pues no sol
 
 > :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
 
+#### General Explicación
+El mosaico generado consiste en recrear una imagen a partir de pequeñas imágenes, para crear una mayor concordancia las pequeñas imágenes pertenecen a la misma temática de la imagen original, en este caso aves. A continuación, se explica el proceso que permitió la creación de la pieza. 
+
+#### Ideas Primarias
+Las primeras ideas que se plantearon para la creación del mosaico fueron 2 principalmente:
+
+* Primero se determino que la mejor manera para crear el mosaico consistía en dividir la imagen en pequeñas cuadriculas cuyo tamaño fuera una potencia de 2 (por ejemplo, 8x8 o 16x16), una vez se tienen estas cuadriculas se haya el color dominante de cada cuadricula, para esto basto con hallar el promedio de cada uno los canales (trabajando en modo rgb) de los colores de cada uno de los pixeles de la cuadricula, esto permitió obtener un color domínate de cada uno de las cuadriculas. 
+
+* Como segunda idea ya teniendo el color predominante de cada una de las cuadriculas, se planteo el uso de una API que se encargara de proveer imágenes para cada una de las cuadriculas con su respectivo color predominante, este proceso funciono en pequeña escala, pero cuando se intentó realizar el proceso con una imagen de tamaño real, se superaron fácilmente el limite de las API, esto conllevo a descartar esta segunda idea y buscar otras alternativas. 
+
+#### HTML Colores y Distancia Delta
+Dado que era imposible conseguir una imagen para cada uno de los colores, se busco alguna manera de estandarizar la paleta, en esta búsqueda se encontró la lista de colores estándares proveídos por **HTML**, dicha lista esta conformada por 140 colores y representan una abstracción bastante completa de la paleta, con esta lista de colores mucho más reducida se busco una imagen para cada uno de los colores. 
+
+En este punto se tenía 140 imágenes para cada uno los colores estandarizados por HTML, pero los colores predominantes de cada uno de las cuadriculas aún no habían sido estandarizado, para esto se hizo uso del concepto de **distancia delta**, dicha distancia expresa de manera numérica la diferencia entre 2 colores,  es decir si x y z son el mismo color su distancia será cero, con este concepto en mente se tomo un cuadricula cuyo color predomínate es el color **c** y se halló la distancia delta del color c con cada uno de los 140 colores y se selecciono el color con la mejor distancia, se tomó la imagen correspondiente a ese color y se construyó el mosaico.
+
+
+#### Conclusions & Future Work
+
+* Si bien la distancia delta es una medida efectiva no deja de ser una simple distancia euclidiana, una mejora en el trabajo podría ser trabajar una medida más precisa de acuerdo con el contexto. 
+
+* Si bien la mayoría de APIs en su capa gratuita tienen unos limites bastantes bajos en relación con lo solicitado por el ejercicio, se podría buscar una solución de pago o usar herramientas de scraping para la creación de una podría API. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### ASCII Art
 
+#### Problem statement 
+Conversión de la imagen a ascii art. Nota: Se puede emplear p5.quadrille.js.
+
+#### Background
+
+El arte ASCII se ha utilizado cuando no es posible la transmisión o la impresión de imágenes en las configuraciones de equipos computarizados, tales como maquinillas, teletipos y equipos de visualización (consolas y terminales) que no cuentan con tarjetas de proceso gráfico. El arte ASCII ha servido como lenguaje fuente para representar logos de compañías y productos, para crear diagramas procedimentales de flujo de operaciones y también en el diseño de los primeros videojuegos.
+
+
+Para analizar de manera satisfactoria una imagen y convertirla a ASCII art, se debe analizar la imagen por regiones.
+El bloque a analizar puede ser de longitud variable, pero deben tenerse en cuenta distintos factores, como el tamaño de los simbolos ASCII o la densidad de la imagen.
+ 
+#### Code & Results
+
+Se tienen variables globales importantes como blockSize, que define el tamaño del bloque a analizar.
+
+```
+let img;
+let v = 1.0 / 9.0;
+let blockSize = 3;
+let count = 500;
+
+function preload() {
+    img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
+}
+
+function setup() {
+    createCanvas(800, 550);
+    img.resize(800, 550);
+    noLoop();
+}
+
+function draw() {
+    background(255);
+    //image(img, 0, 0);
+
+    img.loadPixels();
+
+    let d = pixelDensity();
+    let npixels = 4 * (width * d) * (height * d);
+    //text(pixels.length, 200, 200);
+    for (let x = 0; x < width; x += blockSize) {
+        for (let y = 0; y < height; y += blockSize) {
+            scanBlock(x, y);
+        }
+    }
+}
+```
+La función scanBlock toma un bloque individual de datos y lo envía a la función patternDef, para definir su nivel de brillo y así, asignar un ASCII correspondiente.
+
+```
+function scanBlock(x, y) {
+    let sizeDef = 4 * blockSize;
+    let blockInformation = new Array(4 * blockSize);
+    let index = 0;
+    while (index < blockSize) {
+        let startPosition = (x + y * width) * 4;
+        blockInformation[index * 4] = img.pixels[startPosition];
+        blockInformation[index * 4 + 1] = img.pixels[startPosition + 1];
+        blockInformation[index * 4 + 2] = img.pixels[startPosition + 2];
+        blockInformation[index * 4 + 3] = img.pixels[startPosition + 3];
+        index++;
+    }
+    let res = patternDef(blockInformation);
+    textSize(10);
+    text(res, x, y);
+
+}
+```
+
+La función patternDef toma un bloque de información y lo analiza. Encuentra el brillo promedio del bloque y envía el resultado estandarizado (un valor entre 0 y 1) a la funcion selectCharacter, que se encargará de asignar un caracter a cada bloque analizado.  
+```
+function patternDef(blockInformation) {
+    let brillos = [];
+    let suma = 0;
+    for (let i = 0; i < blockInformation.length; i += 4) {
+        let br =
+            blockInformation[i] * 0.2126 +
+            blockInformation[i + 1] * 0.7152 +
+            blockInformation[i + 2] * 0.0722;
+        brillos.push(br);
+    }
+
+    brillos.forEach((element) => {
+        suma += element;
+    });
+    let promedio = suma / brillos.length;
+    let result = promedio / 255;
+    return selectCharacter(result);
+
+}
+```
+
+La función selectCharacter recibe la intensidad de un bloque previamente analizado, y selecciona un ASCII adecuado para el ASCII art. Esta función es de mucha utilidad, ya que sin ella los caracteres no podrían representar la opacidad o profundidad de la imagen procesada.
+
+```
+function selectCharacter(result) {
+    if (result > 0 && result <= 0.1) {
+        return "▓";
+    } else if (result > 0.1 && result <= 0.2) {
+        return "▒";
+    } else if (result > 0.2 && result <= 0.3) {
+        return "#";
+    } else if (result > 0.3 && result <= 0.4) {
+        return "@";
+    } else if (result > 0.4 && result <= 0.5) {
+        return "%";
+    } else if (result > 0.5 && result <= 0.6) {
+        return "E";
+    } else if (result > 0.6 && result <= 0.7) {
+        return "=";
+    } else if (result > 0.7 && result <= 0.8) {
+        return "0";
+    } else if (result > 0.8 && result <= 0.9) {
+        return "/";
+    } else if (result > 0.9 && result <= 1) {
+        return ".";
+    }
+}
+```
+
+El resultado se muestra a continuación:
 > :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/asciiArt.js
+
+
+
+
+#### Conclusions & future work
+
+Se concluye que el análisis por medio de bloques de información y brillo puede ser de utilidad para la representación fiel de una imagen, pero en algunos casos pueden requerirse distintos algoritmos para medir le intensidad, ya que esta puede verse distorsionada y no ser una medida a representar fiable.
+Como trabajo futuro se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
 
 > :ToCPrevNext

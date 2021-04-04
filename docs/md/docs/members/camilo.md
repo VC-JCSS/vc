@@ -1,16 +1,24 @@
 # Camilo Andres Gil Ballen
 
 ## Bio
+Estudiante de noveno semestre de Ingenieria de Sistemas y Computación de la Universidad Nacional de Colombia sede Bogota.
 
 ## Interests
+* Arquitectura de Software
+* Desarrollo de Software
+* Inteligencia Artificial 
+* Mineria de Datos
+
 
 ## Contributions
+No he realizado ninguna contribución de este tipo, mi trabajo se ha enfocado en proyectos universitarios.
+
 
 ## Hobbies
 * Historia
-* Futbol
-    <!-- *Messi, Maradona,  -->
-* Survival Games
+* Futbol y Deportes en General
+* Musica
+* Videojuegos
 * Random Topics
 
 ## Optical Illusions - Scintillating Grid Illusion
