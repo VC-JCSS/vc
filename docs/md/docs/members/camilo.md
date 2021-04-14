@@ -43,3 +43,4 @@ visual no es simplemente el resultado de un solo receptor, sino el resultado
 de un grupo de receptores que responden a la presentación de estímulos en 
 lo que se llama campo receptivo.
 > :ToCPrevNext
+
