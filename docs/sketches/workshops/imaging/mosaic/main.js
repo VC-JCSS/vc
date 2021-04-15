@@ -23,7 +23,7 @@ function setup() {
     slider.attribute('type', 'range');
     slider.attribute('min', '6');
     slider.attribute('max', '20');
-    slider.attribute('value', '8');
+    slider.attribute('value', '12');
     slider.position(25, 25);
 
     document.getElementById("slider_proof").addEventListener("click", function () {
@@ -46,8 +46,8 @@ function draw() {
 
     let d = pixelDensity();
 
-    let mosaic_part_x = size || 16;
-    let mosaic_part_y = size || 16;
+    let mosaic_part_x = size || 24;
+    let mosaic_part_y = size || 24;
 
     loadPixels();
 
