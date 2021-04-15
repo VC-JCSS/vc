@@ -1,11 +1,4 @@
-> :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
-
-
-
-
-
-
- <!-- # Image and video processing
+# Image and video processing
 
 
 
@@ -1006,6 +999,6 @@ El resultado se muestra a continuación:
 Se concluye que el análisis por medio de bloques de información y brillo puede ser de utilidad para la representación fiel de una imagen, pero en algunos casos pueden requerirse distintos algoritmos para medir le intensidad, ya que esta puede verse distorsionada y no ser una medida a representar fiable.
 Como trabajo futuro se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
 
-> :ToCPrevNext -->
+> :ToCPrevNext
 
 

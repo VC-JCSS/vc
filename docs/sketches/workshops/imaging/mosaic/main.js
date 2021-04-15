@@ -5,7 +5,6 @@ let images_html_colors = {};
 
 let size;
 let slider;
-let wait;
 
 
 
@@ -19,23 +18,12 @@ function setup() {
     createCanvas(800, 640);
     noLoop();
 
-    
-    wait = createElement('div', '.');
-    wait.position(0, 0);
-    wait.style('position', 'absolute');
-    wait.style('left', '0');
-    wait.style('right', '0');
-    wait.style('top', '0');
-    wait.style('bottom', '0');
-    wait.style("background", "rgba(255, 255, 255, 0)");
-    
-
     slider = createElement('input');
     slider.id('slider_proof');
     slider.attribute('type', 'range');
-    slider.attribute('min', '4');
-    slider.attribute('max', '16');
-    slider.attribute('value', '4');
+    slider.attribute('min', '6');
+    slider.attribute('max', '20');
+    slider.attribute('value', '8');
     slider.position(25, 25);
 
     document.getElementById("slider_proof").addEventListener("click", function () {
@@ -49,16 +37,17 @@ function setup() {
 
 function draw() {
 
-    slider.attribute('disable', '' );
-    wait.style("background", "rgba(255, 255, 255, 0.3)");
+    
 
     img.resize(800, 640);
     image(img, 0, 0);
 
+    slider.attribute('disable', '' );
+
     let d = pixelDensity();
 
-    let mosaic_part_x = size || 8;
-    let mosaic_part_y = size || 8;
+    let mosaic_part_x = size || 16;
+    let mosaic_part_y = size || 16;
 
     loadPixels();
 
@@ -89,10 +78,15 @@ function draw() {
         }
     }
 
+    img.resize(200, 160);
+    image(img, 20, 460);
+    
     slider.removeAttribute('disable');
-    wait.style("background", "rgba(255, 255, 255, 0)");
+    
     noLoop();
 }
+
+
 
 
 function preLoadImages() {

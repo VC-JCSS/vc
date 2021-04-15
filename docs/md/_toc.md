@@ -2,7 +2,16 @@
 
 > :Collapse label=Workshops
 > 
-> [Imaging & Video](/docs/workshops/imaging)
+> > :Collapse label=Imaging & Video
+> >
+> > [Original - Delete](/docs/workshops/imaging/original)
+> > [Problem Statem](/docs/workshops/imaging/problem)
+> > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
+> > [Image Kernels](/docs/workshops/imaging/kernels)
+> > [Ascii Art](/docs/workshops/imaging/ascii)
+> > [Mosaic](/docs/workshops/imaging/mosaic)
+> > [Conclusions & Future Work ](/docs/workshops/imaging/conclusions)
+> 
 > [Rendering](/docs/workshops/rendering)
 > [Algovis](/docs/workshops/algovis)
 > [Computer Graphics](/docs/workshops/cg)
