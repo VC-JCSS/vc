@@ -1,4 +1,4 @@
- # Image and video processing
+# Image and video processing
 
 
 
@@ -1000,3 +1000,5 @@ Se concluye que el análisis por medio de bloques de información y brillo puede
 Como trabajo futuro se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
 
 > :ToCPrevNext
+
+
