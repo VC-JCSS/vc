@@ -1,12 +1,13 @@
 let img;
+let button;
 
 function preload() {
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda2.jpg");
 }
 
 function setup() {
-    createCanvas(800, 550);
-    img.resize(400, 275);
+    createCanvas(windowWidth, windowHeight);
+    img.resize(windowWidth/2, windowHeight/2);
     noLoop();
 }
 
@@ -75,4 +76,8 @@ function draw() {
     }
     sImg.updatePixels();
     image(sImg, 400, 275);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
