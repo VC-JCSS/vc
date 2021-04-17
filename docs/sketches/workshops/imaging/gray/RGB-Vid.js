@@ -8,7 +8,6 @@ function setup() {
     createCanvas(320, 240);
     //fingers.loop();
     fingers.hide();
-
 }
 
 function draw() {
@@ -31,4 +30,13 @@ function draw() {
 
 function mousePressed() {
     fingers.loop(); // set the video to loop and start playing
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

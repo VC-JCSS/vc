@@ -2,7 +2,7 @@
 let img;
 let html_colors = ['#00FFFF', '#F0F8FF', '#FAEBD7', '#000000', '#0000FF', '#00FFFF', '#00008B', '#008B8B', '#006400', '#00CED1', '#00BFFF', '#008000', '#00FF00', '#0000CD', '#00FA9A', '#000080', '#00FF7F', '#008080', '#191970', '#1E90FF', '#20B2AA', '#228B22', '#2E8B57', '#2F4F4F', '#2F4F4F', '#32CD32', '#3CB371', '#40E0D0', '#4169E1', '#4682B4', '#483D8B', '#48D1CC', '#4B0082', '#556B2F', '#5F9EA0', '#6495ED', '#66CDAA', '#696969', '#696969', '#6A5ACD', '#6B8E23', '#708090', '#708090', '#778899', '#778899', '#7B68EE', '#7CFC00', '#7FFFD4', '#7FFF00', '#808080', '#808080', '#800000', '#808000', '#800080', '#87CEFA', '#87CEEB', '#8A2BE2', '#8B008B', '#8B0000', '#8B4513', '#8FBC8F', '#90EE90', '#9370DB', '#9400D3', '#98FB98', '#9932CC', '#9ACD32', '#A0522D', '#A52A2A', '#A9A9A9', '#A9A9A9', '#ADFF2F', '#ADD8E6', '#AFEEEE', '#B0C4DE', '#B0E0E6', '#B22222', '#B8860B', '#BA55D3', '#BC8F8F', '#BDB76B', '#C0C0C0', '#C71585', '#CD5C5C', '#CD853F', '#D2691E', '#D2B48C', '#D3D3D3', '#D3D3D3', '#D8BFD8', '#DAA520', '#DA70D6', '#DB7093', '#DC143C', '#DCDCDC', '#DDA0DD', '#DEB887', '#E0FFFF', '#E6E6FA', '#E9967A', '#EEE8AA', '#EE82EE', '#F0FFFF', '#F0FFF0', '#F0E68C', '#F08080', '#F4A460', '#F5F5DC', '#F5FFFA', '#F5DEB3', '#F5F5F5', '#F8F8FF', '#FAFAD2', '#FAF0E6', '#FA8072', '#FDF5E6', '#FFE4C4', '#FFEBCD', '#FF7F50', '#FFF8DC', '#FF8C00', '#FF1493', '#FFFAF0', '#FF00FF', '#FFD700', '#FF69B4', '#FFFFF0', '#FFF0F5', '#FFFACD', '#FFB6C1', '#FFA07A', '#FFFFE0', '#FF00FF', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#FFA500', '#FF4500', '#FFEFD5', '#FFDAB9', '#FFC0CB', '#FF0000', '#FFF5EE', '#FFFAFA', '#FF6347', '#FFFFFF', '#FFFF00',];
 let images_html_colors = {};
-
+let button;
 let size;
 let slider;
 
@@ -15,7 +15,7 @@ function preload() {
 
 
 function setup() {
-    createCanvas(800, 640);
+    createCanvas(windowWidth, windowHeight);
     noLoop();
 
     slider = createElement('input');
@@ -25,6 +25,10 @@ function setup() {
     slider.attribute('max', '20');
     slider.attribute('value', '12');
     slider.position(25, 25);
+
+    button = createButton('FullScreen');
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 
     document.getElementById("slider_proof").addEventListener("click", function () {
         size = 2 * slider.value();
@@ -39,7 +43,7 @@ function draw() {
 
     
 
-    img.resize(800, 640);
+    img.resize(windowWidth, windowHeight);
     image(img, 0, 0);
 
     slider.attribute('disable', '' );
@@ -149,3 +153,11 @@ function hexToRgb(hex) {
     } : null;
 }
 
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}

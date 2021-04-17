@@ -74,3 +74,12 @@ function convolution(x, y, matrix) {
 
     return color(rtotal, gtotal, btotal);
 }
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
