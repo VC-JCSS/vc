@@ -12,6 +12,7 @@ export interface P5Options {
   id: string;
   width: string;
   height: string;
+  padding: string;
   sound: string;
   version: string;
   p5lib: string;
@@ -62,11 +63,13 @@ export function P5(
     libs = options.lib5.substring(0, 4) == 'http' ? libs.concat("<script src=".concat((options.lib5).concat("></script>"))) : 
     libs.concat("<script src=".concat(repo.concat(options.lib5).concat("></script>")));
   }
+
   let width: string = options.width ? options.width : "800";
   let height: string = options.height ? options.height : "600";
   let padding: number = 10;
   width = (+width + 2*(padding)).toString();
   height = (+height + 2*(padding)).toString();
+  
   let id: string;
   if (options.sketch) {
     let filename = options.sketch.split("/").pop();
