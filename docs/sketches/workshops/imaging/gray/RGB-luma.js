@@ -4,6 +4,12 @@ let button;
 function preload() {
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda2.jpg");
 
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noLoop();
+
     button = createButton('FullScreen');
     button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
         '\tbackground-color:transparent;\n' +
@@ -21,19 +27,8 @@ function preload() {
     button.mousePressed(fullScreen);
 }
 
-function fullScreen() {
-    let fs = fullscreen();
-    fullscreen(!fs);
-}
-
-function setup() {
-    createCanvas(windowWidth, windowHeight);
-    img.resize(windowWidth/2, windowHeight/2);
-    noLoop();
-}
-
 function draw() {
-
+    img.resize(windowWidth/2, windowHeight/2);
     eImg = createImage(img.width, img.height);
     bImg = createImage(img.width, img.height);
     oImg = createImage(img.width, img.height);
@@ -41,11 +36,12 @@ function draw() {
 
 
     background(150);
-    image(img, windowWidth/2, 0);
+    image(img, img.width, 0);
     filter(GRAY);
+
     //Imagen original
     let d = pixelDensity();
-    let npixels = 4 * (img.width * d) * (img.height * d);
+    let npixels = 4 * (windowWidth/2 * d) * (windowHeight/2 * d);
     img.loadPixels();
     eImg.loadPixels();
     for (let i = 0; i < npixels; i += 4) {
@@ -117,6 +113,11 @@ function sRGBtoLin(colorChannel) {
     } else {
         return Math.pow((( colorChannel + 0.055)/1.055),2.4);
     }
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
 }
 
 function windowResized() {

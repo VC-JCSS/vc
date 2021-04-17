@@ -1,4 +1,5 @@
 let img;
+let button;
 let v = 1.0 / 9.0;
 
 let emboss = [
@@ -27,16 +28,20 @@ let sharpen = [
 
 function preload() {
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
+
 }
 
 function setup() {
-    createCanvas(800, 550);
-    img.resize(400, 275);
+    createCanvas(windowWidth, windowHeight);
+
     noLoop();
+    button = createButton('FullScreen');
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 }
 
 function draw() {
-
+    img.resize(windowWidth/2, windowHeight/2);
     img.loadPixels();
 
     eImg = createImage(img.width, img.height);
@@ -72,7 +77,7 @@ function draw() {
         }
     }
     bImg.updatePixels();
-    image(bImg, 400, 0);
+    image(bImg, windowWidth/2, 0);
 
 
     oImg.loadPixels();
@@ -88,7 +93,7 @@ function draw() {
         }
     }
     oImg.updatePixels();
-    image(oImg, 0, 275);
+    image(oImg, 0, windowHeight/2);
 
     sImg.loadPixels();
     for (let x = 1; x < img.width; x++) {
@@ -103,7 +108,7 @@ function draw() {
         }
     }
     sImg.updatePixels();
-    image(sImg, 400, 275);
+    image(sImg, windowWidth/2, windowHeight/2);
 }
 
 function convolution(x, y, matrix) {
@@ -137,4 +142,13 @@ function convolution(x, y, matrix) {
     btotal = constrain(btotal, 0, 255);
 
     return color(rtotal, gtotal, btotal);
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

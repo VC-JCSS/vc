@@ -26,14 +26,14 @@ function setup() {
     button.mousePressed(fullScreen);
 }
 
-function fullScreen() {
-    let fs = fullscreen();
-    fullscreen(!fs);
-}
-
 function draw() {
     img.resize(windowWidth, windowHeight);
     image(img, 0, 0);
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
 }
 
 function windowResized() {
