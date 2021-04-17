@@ -5,12 +5,16 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 550);
+    createCanvas(windowWidth, windowHeight);
     noLoop();
+
+    button = createButton('FullScreen');
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 }
 
 function draw() {
-    img.resize(800, 550);
+    img.resize(windowWidth, windowHeight);
     image(img, 0, 0);
 
     //negative (rgb) -> (255-r,255-g,255-b)
@@ -26,4 +30,13 @@ function draw() {
     }
     updatePixels();
     //filter(INVERT);
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

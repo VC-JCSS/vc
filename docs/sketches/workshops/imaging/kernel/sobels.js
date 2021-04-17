@@ -1,4 +1,5 @@
 let img;
+let button;
 
 let topS = [
     [1, 2, 1],
@@ -29,13 +30,16 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 550);
-    img.resize(400, 275);
+    createCanvas(windowWidth, windowHeight);
+
     noLoop();
+    button = createButton('FullScreen');
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 }
 
 function draw() {
-
+    img.resize(windowWidth/2, windowHeight/2);
     img.loadPixels();
 
     tImg = createImage(img.width, img.height);
@@ -71,7 +75,7 @@ function draw() {
         }
     }
     rImg.updatePixels();
-    image(rImg, 400, 0);
+    image(rImg, windowWidth/2, 0);
 
 
     bImg.loadPixels();
@@ -87,7 +91,7 @@ function draw() {
         }
     }
     bImg.updatePixels();
-    image(bImg, 0, 275);
+    image(bImg, 0, windowHeight/2);
 
     lImg.loadPixels();
     for (let x = 1; x < img.width; x++) {
@@ -102,7 +106,15 @@ function draw() {
         }
     }
     lImg.updatePixels();
-    image(lImg, 400, 275);
+    image(lImg, windowWidth/2, windowHeight/2);
+
+    fill(255, 255, 255);
+    textSize(32);
+    text('Top', 330, 30);
+    text('Bottom', 280, 310);
+    text('Right', 710, 30);
+    text('Left', 730, 310);
+  
 }
 
 function convolution(x, y, matrix) {
@@ -136,4 +148,13 @@ function convolution(x, y, matrix) {
     btotal = constrain(btotal, 0, 255);
 
     return color(rtotal, gtotal, btotal);
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

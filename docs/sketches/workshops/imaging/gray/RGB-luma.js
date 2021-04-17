@@ -1,17 +1,34 @@
 let img;
+let button;
 
 function preload() {
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda2.jpg");
+
 }
 
 function setup() {
-    createCanvas(800, 550);
-    img.resize(400, 275);
+    createCanvas(windowWidth, windowHeight);
     noLoop();
+
+    button = createButton('FullScreen');
+    button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
+        '\tbackground-color:transparent;\n' +
+        '\tborder-radius:6px;\n' +
+        '\tborder:1px solid #000000;\n' +
+        '\tdisplay:inline-block;\n' +
+        '\tcursor:pointer;\n' +
+        '\tcolor:#000000;\n' +
+        '\tfont-family:Arial;\n' +
+        '\tfont-size:15px;\n' +
+        '\tfont-weight:bold;\n' +
+        '\tpadding:6px 24px;\n' +
+        '\ttext-decoration:none;\n' );
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 }
 
 function draw() {
-
+    img.resize(windowWidth/2, windowHeight/2);
     eImg = createImage(img.width, img.height);
     bImg = createImage(img.width, img.height);
     oImg = createImage(img.width, img.height);
@@ -19,11 +36,12 @@ function draw() {
 
 
     background(150);
-    image(img, 400, 0);
+    image(img, img.width, 0);
     filter(GRAY);
+
     //Imagen original
     let d = pixelDensity();
-    let npixels = 4 * (img.width * d) * (img.height * d);
+    let npixels = 4 * (windowWidth/2 * d) * (windowHeight/2 * d);
     img.loadPixels();
     eImg.loadPixels();
     for (let i = 0; i < npixels; i += 4) {
@@ -50,7 +68,7 @@ function draw() {
         oImg.pixels[i + 3] = img.pixels[i+3];
     }
     oImg.updatePixels();
-    image(oImg, 0, 275);
+    image(oImg, 0, windowHeight/2);
 
     //Promedio RGB
     sImg.loadPixels();
@@ -62,7 +80,7 @@ function draw() {
         sImg.pixels[i + 3] = img.pixels[i + 3];
     }
     sImg.updatePixels();
-    image(sImg, 400, 275);
+    image(sImg, windowWidth/2, windowHeight/2);
 }
 
 function gammaCorrected(pix) {
@@ -95,4 +113,13 @@ function sRGBtoLin(colorChannel) {
     } else {
         return Math.pow((( colorChannel + 0.055)/1.055),2.4);
     }
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
