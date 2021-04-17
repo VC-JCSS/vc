@@ -8,12 +8,16 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 550);
-    img.resize(800, 550);
+    createCanvas(windowWidth, windowHeight);
     noLoop();
+
+    button = createButton('FullScreen');
+    button.position(0, 0);
+    button.mousePressed(fullScreen);
 }
 
 function draw() {
+    img.resize(windowWidth, windowHeight);
     background(255);
     //image(img, 0, 0);
 
@@ -89,4 +93,13 @@ function selectCharacter(result) {
     } else if (result > 0.9 && result <= 1) {
         return ".";
     }
+}
+
+function fullScreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
