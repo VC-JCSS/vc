@@ -41,7 +41,9 @@ function setup() {
 }
 
 function draw() {
+  
     img.resize(windowWidth/2, windowHeight/2);
+
     img.loadPixels();
 
     eImg = createImage(img.width, img.height);
@@ -109,6 +111,14 @@ function draw() {
     }
     sImg.updatePixels();
     image(sImg, windowWidth/2, windowHeight/2);
+
+    fill(255, 255, 255);
+    textSize(32);
+    text('Emboss', 270, 30);
+    text('Outline', 280, 310);
+    text('Blur', 730, 30);
+    text('Sharpen', 665, 310);
+
 }
 
 function convolution(x, y, matrix) {

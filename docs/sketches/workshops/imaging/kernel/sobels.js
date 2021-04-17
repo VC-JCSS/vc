@@ -107,6 +107,14 @@ function draw() {
     }
     lImg.updatePixels();
     image(lImg, windowWidth/2, windowHeight/2);
+
+    fill(255, 255, 255);
+    textSize(32);
+    text('Top', 330, 30);
+    text('Bottom', 280, 310);
+    text('Right', 710, 30);
+    text('Left', 730, 310);
+  
 }
 
 function convolution(x, y, matrix) {

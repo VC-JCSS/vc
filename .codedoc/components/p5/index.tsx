@@ -69,7 +69,7 @@ export function P5(
   let _p: number = Math.abs(parseFloat(options.padding ? options.padding : '10'));
   let width: string = _w > 1 ? (_w + 2*(_p)).toString().concat('px') : (_w*100).toString().concat('%');
   let height: string = _h > 1 ? (_h + 2*(_p)).toString().concat('px') : (_h*100).toString().concat('%');
-
+    
   let id: string;
   if (options.sketch) {
     let filename = options.sketch.split("/").pop();
