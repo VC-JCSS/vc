@@ -82,6 +82,27 @@ let vB = b / 255;
 *Paso 2*
 
 Convertir un RGB codificado (paso 1) con gamma a un valor lineal. RGB (estándar de computadora), por ejemplo, requiere una curva de potencia de aproximadamente V ^ 2.2, aunque la transformación "precisa" es:
+<!-- 
+> :Formula align=center
+>
+> ```
+> V_{linear} = 
+> \begin{cases}
+> \frac{V'}{12.92} & \text{\(V' \leq 0.04045\)} \\
+> \( \frac{V'+0.055}{1.055} \)^{2.4} & \text{V' > 0.04045} \\
+> \end{cases}
+> ```
+--> 
+> :Formula align=center
+>
+> ```
+> V_{linear} = 
+> \begin{cases}
+> \frac{V'}{12.92} & \text{\(V' \leq 0.04045\)} \\
+> (\frac{V'+0.055}{1.055})^{2.4} & \text{\(V' > 0.04045\)} \\
+> \end{cases}
+> ```
+
 
 ![Image formula 1](https://i.stack.imgur.com/syfhh.png)
 
@@ -102,6 +123,12 @@ function sRGBtoLin(colorChannel) {
 *Paso 3*
 
 Para encontrar la luminancia aplicamos los coeficientes estándar para sRGB:
+
+> :Formula align=center
+>
+> ```
+> Y = R_{lin} \cdot 0.2126 + G_{lin} \cdot 0.7152 + B_{lin} \cdot 0.0722
+> ```
 
 ![Image formula 2](https://i.stack.imgur.com/TZoZA.png)
 
