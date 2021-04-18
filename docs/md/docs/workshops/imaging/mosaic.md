@@ -2,6 +2,8 @@
 
 ## Background
 
+Se debe implementar un mecanismo que genere un mosaico el cual consiste en recrear una imagen a partir de pequeñas imágenes, para crear una mayor concordancia las pequeñas imágenes deben pertenece a la misma temática de la imagen original, por ejemplo, aves. 
+
 **Ideas Primarias:** Las primeras ideas que se plantearon para la creación del mosaico fueron 2 principalmente:
 
 * Primero se determino que la mejor manera para crear el mosaico consistía en dividir la imagen en pequeñas cuadriculas cuyo tamaño fuera una potencia de 2 (por ejemplo, 8x8 o 16x16), una vez se tienen estas cuadriculas se haya el color dominante de cada cuadricula, para esto basto con hallar el promedio de cada uno los canales (trabajando en modo rgb) de los colores de cada uno de los pixeles de la cuadricula, esto permitió obtener un color domínate de cada uno de las cuadriculas. 
