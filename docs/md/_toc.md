@@ -4,7 +4,6 @@
 > 
 > > :Collapse label=Imaging & Video
 > >
-> > [Original - Delete](/docs/workshops/imaging/original)
 > > [Problem Statem](/docs/workshops/imaging/problem)
 > > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
 > > [Image Kernels](/docs/workshops/imaging/kernels)
