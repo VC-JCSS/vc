@@ -1,14 +1,14 @@
 # Problem Statement
 
-La materia prima de estudio de la computación visual, son las imágenes y los videos, antes de iniciar a trabajar con alguna temática especifica en detalle o entender algoritmos que permiten las manejar imágenes o videos en algún contexto, es necesario realizar un primer acercamiento al manejo de imágenes y videos, para esto se plantearan una serie de ejercicios que si bien no son simples si sirven como un punto de partida para la comprensión de las herramientas y flujos de trabajo que se usaran en adelante.
+El tema de estudio inicial en computación visual es el procesamiento de imágenes y videos. Antes de iniciar a trabajar con alguna temática especifica en detalle o entender algoritmos que permiten las manejar imágenes o videos en algún contexto, es necesario realizar un primer acercamiento al manejo de imágenes y videos, para esto se plantearán una serie de ejercicios que si bien son simples, sirven como un punto de partida para la comprensión de las herramientas y flujos de trabajo que se utilizarán en adelante.
 <br/>
 
-Para iniciar se buscará la manera de trabajar con imágenes usando la herramienta P5.js, una vez se tiene esto se intentará replicar dos de los efectos más populares, el primero es convertir una imagen de color a blanco y negro, el segundo consiste en aplicar el efecto luma. También se intentarán aplicar estos efectos a videos.
+Inicialmente, se buscará la manera de trabajar con imágenes usando la herramienta P5.js, para posteriormente realizar la conversión una imagen de color a blanco y negro por medio de distintas técnicas, entre ellas, la aplicación del efecto luma. Estos efectos serán aplicados también en videos. Estos ejercicios pueden ser encontrados [aquí](https://vc-jcss.github.io/vc/docs/workshops/imaging/basic_gray).
 <br/>
 
-Una vez familiarizado con las técnicas de manipulación y transformación de imágenes y videos, se trabajará con kernels, esta herramienta va más allá de un análisis de píxel por píxel y permitirá crear transformaciones más complejas, como obtener los bordes de los cuerpos en una imagen o hacer borrosa una imagen.  
+Una vez familiarizadas las técnicas de procesamiento y transformación de imágenes y videos, se trabajará con matrices kernel, las cuales permitirán crear transformaciones más complejas, como filtros para obtener los bordes de los objetos en una imagen o aplicar un filtro borroso a una imagen. Estos ejercicios pueden ser encontrados [aquí](https://vc-jcss.github.io/vc/docs/workshops/imaging/kernels).
 <br/>
-Por último, aparecerían dos retos que van mas alla de un simple análisis de la imagen y requerirán herramientas externas, estos retos representaran un escenario de trabajo real, el primer resto consistirá representar la imagen únicamente con caracteres ASCII y el segundo reto consistirá crear un mosaico a partir de una imagen. 
+Finalmente, aparecerán dos retos que van mas alla de un simple análisis de la imagen y requerirán herramientas externas, estos retos representaran un escenario de trabajo real. El primer reto consistirá en [representar una imagen únicamente con caracteres ASCII](https://vc-jcss.github.io/vc/docs/workshops/imaging/ascii), mientras que el segundo reto consistirá en crear un [mosaico a partir de una imagen](https://vc-jcss.github.io/vc/docs/workshops/imaging/mosaic).
 <br/>
 
-Los ejercicios planteados, representan un acercamiento al trabajo con imágenes y videos, esto permitirá adquirir destrezas para realizar trabajos futuros. 
+Así, los ejercicios planteados representan un acercamiento al trabajo con imágenes y videos, lo que permitirá adquirir destrezas para realizar trabajos futuros.
