@@ -15,7 +15,7 @@ function preload() {
 
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth-15, windowHeight-21);
     noLoop();
 
     slider = createElement('input');
@@ -24,10 +24,21 @@ function setup() {
     slider.attribute('min', '6');
     slider.attribute('max', '20');
     slider.attribute('value', '12');
-    slider.position(25, 25);
+    slider.position(3, 35);
 
     button = createButton('FullScreen');
-    button.position(0, 0);
+    button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
+        '\tborder-radius:6px;\n' +
+        '\tborder:1px solid #000000;\n' +
+        '\tdisplay:inline-block;\n' +
+        '\tcursor:pointer;\n' +
+        '\tcolor:#000000;\n' +
+        '\tfont-family:Arial;\n' +
+        '\tfont-size:15px;\n' +
+        '\tfont-weight:bold;\n' +
+        '\tpadding:6px 24px;\n' +
+        '\ttext-decoration:none;\n' );
+    button.position(3, 3);
     button.mousePressed(fullScreen);
 
     document.getElementById("slider_proof").addEventListener("click", function () {
@@ -159,5 +170,5 @@ function fullScreen() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth-15, windowHeight-21);
 }

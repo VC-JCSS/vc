@@ -7,12 +7,11 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth-15, windowHeight-21);
     noLoop();
 
     button = createButton('FullScreen');
     button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
-        '\tbackground-color:transparent;\n' +
         '\tborder-radius:6px;\n' +
         '\tborder:1px solid #000000;\n' +
         '\tdisplay:inline-block;\n' +
@@ -23,7 +22,7 @@ function setup() {
         '\tfont-weight:bold;\n' +
         '\tpadding:6px 24px;\n' +
         '\ttext-decoration:none;\n' );
-    button.position(0, 0);
+    button.position(3, 3);
     button.mousePressed(fullScreen);
 }
 
@@ -121,5 +120,5 @@ function fullScreen() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth-15, windowHeight-21);
 }
