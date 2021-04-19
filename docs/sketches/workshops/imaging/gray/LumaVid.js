@@ -18,8 +18,6 @@ function draw() {
     for (let x = 1; x < fingers.width; x++) {
         for (let y = 1; y < fingers.height; y++) {
             let index = 4 * (x + fingers.width * y);
-
-
             let lum = luma(fingers.pixels[index], fingers.pixels[index + 1],fingers.pixels[index + 2])
             pixels[index] = lum;
             pixels[index + 1] = lum;
