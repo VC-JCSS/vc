@@ -22,6 +22,7 @@ function setup() {
   slider.attribute("min", "3");
   slider.attribute("max", "10");
   slider.attribute("value", "6");
+  blockSize = slider.value();
   slider.position(25, 25);
 
   document
