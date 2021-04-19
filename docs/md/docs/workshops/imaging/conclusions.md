@@ -3,7 +3,7 @@
 Se pueden apreciar varias caracteristicas comunes a las aplicaciones planteadas. La versatilidad de las aplicaciones es una caracteristica fundamental identificada. Inicialmente, el método de procesamiento del Kernel tiene distintas utilidades en sí mismo, ya que nos permite, además de aplicar filtros a las imágenes, obtener información fundamental de una imagen, facilitando así su estudio y análisis en otras ramas del análsis de estas. 
 <br/>
 <br/>
-Por otro lado, el análisis de imagenes por medio de bloques de información, teniendo incluso en cuenta su brillo, puede ser de útilidad para la obtención de información de una imagen, pero además, nos brinda distintas posibilidades de aplicación, como lo son la representación de imagenes a través de caractéres ASCII (ASCII Art), o su representación mediante mosaicos de imagenes.
+Por otro lado, el análisis de imagenes por medio de bloques de información teniendo en cuenta su brillo, puede ser de útilidad para la obtención de información de una imagen. Además, esta clase de análisis nos brinda distintas posibilidades de aplicación, como la representación de imagenes a través de caractéres ASCII (ASCII Art) o los mosaicos de imagenes.
 En este caso, como mejora a la implementación se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
 <br/>
 <br/>
