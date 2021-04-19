@@ -13,6 +13,8 @@ Esta última aplicación, que analiza una imagen y genera un mosaico de la misma
 
 * Hacer uso de una API de pago mejoraría considerablemente la aplicación implementada, ya que permitiría personalizar un mosaico con una mayor gama de posibilidades. La implementación de una API que pueda proveer las imagenes solicitadas lograría el mismo resultado, según las pruebas realizadas. 
 
+> :ToCPrevNext
+
 <!--
 El kernel es un método de procesamiento de imágenes muy versátil, pues no solo sirve para aplicar filtros a las imágenes, sino que también permiten la obtención de carácteristicas de una imagen, facilitando así el estudio de las imagenes, y su aplicación en otras áreas que hacen uso de imágenes. Finalmente, para un trabajo futuro este tema se puede profundizar y desarrollar con la investigación y experimentación sobre cada uno de los filtros y la razón por la cual cada uno de ellos genera el debido efecto.
 

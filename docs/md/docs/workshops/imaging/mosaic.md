@@ -72,6 +72,7 @@ En este punto se tenía 140 imágenes para cada uno los colores estandarizados p
 
 
 
+
 ### Code
 A continuacion no se muestran algunos fragmentos de codigo que permitiran comprender los detalles de la solucion planteada.
 > :Tabs
@@ -328,3 +329,5 @@ A continuación se muestra una imagen y el resultado al aplicar el algoritmo par
 
 > :P5 sketch=/docs/sketches/workshops/imaging/mosaic/main.js, width=800, height=640
 
+
+> :ToCPrevNext

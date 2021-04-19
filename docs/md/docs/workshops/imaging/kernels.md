@@ -1,10 +1,6 @@
 
 ## Image Kernels
 
-### Problem Statement
-
-Aplicar máscaras de convolución (O Kenels) en imágenes y videos utilizando la herramienta p5.js. 
-
 ### Background
 
 El kernel de una imagen es una pequeña matriz cuadrada de tamaño impar que, por medio de la convolución entre el kernel y la imagen, se utiliza para aplicar distintos efectos en la imagen. La convolución es el proceso en el cual se suma cada píxel de la imagen con sus vecinos locales, teniendo en cuenta los pesos indicados por el kernel. De esta forma, si tenemos la matriz de píxeles y el kernel
@@ -635,7 +631,4 @@ Adicionalmente, estos kernel pueden ser utilizados en el procesamiento de videos
 > > }
 > > ```
 
-### Conclusions & Future Work
-
-El kernel es un método de procesamiento de imágenes muy versátil, pues no solo sirve para aplicar filtros a las imágenes, sino que también permiten la obtención de carácteristicas de una imagen, facilitando así el estudio de las imagenes, y su aplicación en otras áreas que hacen uso de imágenes. Finalmente, para un trabajo futuro este tema se puede profundizar y desarrollar con la investigación y experimentación sobre cada uno de los filtros y la razón por la cual cada uno de ellos genera el debido efecto.
-
+> :ToCPrevNext

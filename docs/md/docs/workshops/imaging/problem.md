@@ -12,3 +12,5 @@ Finalmente, aparecerán dos retos que van mas alla de un simple análisis de la 
 <br/>
 
 Así, los ejercicios planteados representan un acercamiento al trabajo con imágenes y videos, lo que permitirá adquirir destrezas para realizar trabajos futuros.
+
+> :ToCPrevNext

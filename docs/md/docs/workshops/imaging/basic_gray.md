@@ -163,6 +163,6 @@ Se muestra aplicando luma en video
 
 > :P5 sketch=/docs/sketches/workshops/imaging/gray/RGB-Vid.js, width=320, height=240
 
-
+> :ToCPrevNext
 
 
