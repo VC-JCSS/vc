@@ -2,18 +2,29 @@ let img;
 let v = 1.0 / 9.0;
 let blockSize = 3;
 let count = 500;
-let slider;
+let slider, button;
 
 function preload() {
   img = loadImage("/vc/docs/sketches/workshops/imaging/mosaic/duck.jpg");
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth-15, windowHeight-21);
   noLoop();
   
   button = createButton('FullScreen');
-  button.position(0, 0);
+  button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
+      '\tborder-radius:6px;\n' +
+      '\tborder:1px solid #000000;\n' +
+      '\tdisplay:inline-block;\n' +
+      '\tcursor:pointer;\n' +
+      '\tcolor:#000000;\n' +
+      '\tfont-family:Arial;\n' +
+      '\tfont-size:15px;\n' +
+      '\tfont-weight:bold;\n' +
+      '\tpadding:6px 24px;\n' +
+      '\ttext-decoration:none;\n' );
+  button.position(3, 3);
   button.mousePressed(fullScreen);
 
   slider = createElement("input");
@@ -23,7 +34,7 @@ function setup() {
   slider.attribute("max", "10");
   slider.attribute("value", "6");
   blockSize = slider.value();
-  slider.position(25, 25);
+  slider.position(3, 35);
 
   document
     .getElementById("slider_proof")
@@ -35,7 +46,7 @@ function setup() {
 }
 
 function draw() {
-  img.resize(windowWidth, windowHeight);
+  img.resize(windowWidth-15, windowHeight-21);
   background(255);
 
   img.loadPixels();
@@ -90,25 +101,37 @@ function patternDef(blockInformation) {
 }
 
 function selectCharacter(result) {
-  if (result > 0 && result <= 0.1) {
-    return "▓";
-  } else if (result > 0.1 && result <= 0.2) {
-    return "▒";
-  } else if (result > 0.2 && result <= 0.3) {
-    return "#";
-  } else if (result > 0.3 && result <= 0.4) {
+  if (result > 0 && result <= 0.0625) {
     return "@";
-  } else if (result > 0.4 && result <= 0.5) {
-    return "%";
-  } else if (result > 0.5 && result <= 0.6) {
-    return "E";
-  } else if (result > 0.6 && result <= 0.7) {
-    return "=";
-  } else if (result > 0.7 && result <= 0.8) {
-    return "0";
-  } else if (result > 0.8 && result <= 0.9) {
-    return "/";
-  } else if (result > 0.9 && result <= 1) {
+  } else if (result > 0.0625 && result <= 0.125) {
+    return "M";
+  } else if (result > 0.125 && result <= 0.1875) {
+    return "N";
+  } else if (result > 0.1875 && result <= 0.25) {
+    return "H";
+  } else if (result > 0.25 && result <= 0.3125) {
+    return "Q";
+  } else if (result > 0.3125 && result <= 0.375) {
+    return "&";
+  } else if (result > 0.375 && result <= 0.4375) {
+    return "O";
+  } else if (result > 0.4375 && result <= 0.5) {
+    return "C";
+  } else if (result > 0.5 && result <= 0.5625) {
+    return "?";
+  } else if (result > 0.5625 && result <= 0.625) {
+    return "7";
+  } else if (result > 0.625 && result <= 0.6875) {
+    return ">";
+  } else if (result > 0.6875 && result <= 0.75) {
+    return "!";
+  } else if (result > 0.75 && result <= 0.8125) {
+    return ";";
+  } else if (result > 0.8125 && result <= 0.875) {
+    return ":";
+  } else if (result > 0.875 && result <= 0.9375) {
+    return "-";
+  } else if (result > 0.9375 && result <= 0.1) {
     return ".";
   }
 }
@@ -119,5 +142,5 @@ function fullScreen() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth-15, windowHeight-21);
 }

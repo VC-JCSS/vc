@@ -51,9 +51,6 @@ function setup() {
 }
 
 function draw() {
-
-    
-
     img.resize(windowWidth, windowHeight);
     image(img, 0, 0);
 
