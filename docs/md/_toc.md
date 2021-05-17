@@ -12,6 +12,7 @@
 > > [Conclusions & Future Work ](/docs/workshops/imaging/conclusions)
 > 
 > [Rendering](/docs/workshops/rendering)
+> [GLobal illumination](/docs/workshops/rendering/global_illumination)
 > [Algovis](/docs/workshops/algovis)
 > [Computer Graphics](/docs/workshops/cg)
 > [HCI](/docs/workshops/hci)
