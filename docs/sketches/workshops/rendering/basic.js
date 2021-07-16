@@ -1,3 +1,4 @@
+var quadrille;
 let img;
 
 function preload() {
@@ -5,25 +6,15 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth - 15, windowHeight - 21, WEBGL);
-    perspective(PI / 3.0, width / height, 0.1, 500);
-    ortho(-width / 2, width / 2, -height / 2, height / 2);
-    //perspective(PI/3.0, width/height, eyeZ/10.0, eyeZ*10.0);
-    createEasyCam();
+    createCanvas(800, 550);
 }
 
 function draw() {
-    background(0);
-    texture(img);
-    textureMode(NORMAL);
-    beginShape();
-    vertex(-width / 2, -height / 2, 0, 0);
-    vertex(width / 2, -height / 2, 1, 0);
-    vertex(width / 2, height / 2, 1, 1);
-    vertex(-width / 2, height / 2, 0, 1);
-    endShape(CLOSE);
-}
-
-function windowResized() {
-    resizeCanvas(windowWidth - 15, windowHeight - 21);
+    let quadrille = createQuadrille(200, 200);
+    drawQuadrille(quadrille, 50, 50, 20, 1, color(0), true);
+    //if (frameCount % 200 === 0) {
+    // let scl = 8; //2 ** int(random(4));
+    // quadrille = createQuadrille(20 * scl, img);
+    // drawQuadrille(quadrille, 0, 0, 40 / scl, 1.6 / scl, color(0));
+    //}
 }

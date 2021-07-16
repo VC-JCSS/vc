@@ -11,12 +11,11 @@ function preload() {
 }
 
 function mousePressed() {
-    fingers.loop(); // set the video to loop and start playing
+    fingers.loop();
 }
 
 function setup() {
     createCanvas(320, 240);
-    //fingers.loop();
     fingers.hide();
     fingers.volume(0);
 }

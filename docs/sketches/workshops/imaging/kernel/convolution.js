@@ -28,15 +28,14 @@ let sharpen = [
 
 function preload() {
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg");
-
 }
 
 function setup() {
-    createCanvas(windowWidth-15, windowHeight-21);
+    createCanvas(windowWidth - 15, windowHeight - 21);
 
     noLoop();
     button = createButton('FullScreen');
-    button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
+    button.attribute('style', 'box-shadow:inset 0px 1px 0px 0px #000000;\n' +
         '\tborder-radius:6px;\n' +
         '\tborder:1px solid #000000;\n' +
         '\tdisplay:inline-block;\n' +
@@ -46,14 +45,14 @@ function setup() {
         '\tfont-size:15px;\n' +
         '\tfont-weight:bold;\n' +
         '\tpadding:6px 24px;\n' +
-        '\ttext-decoration:none;\n' );
+        '\ttext-decoration:none;\n');
     button.position(3, 3);
     button.mousePressed(fullScreen);
 }
 
 function draw() {
-  
-    img.resize(windowWidth/2, windowHeight/2);
+
+    img.resize(windowWidth / 2, windowHeight / 2);
 
     img.loadPixels();
 
@@ -90,7 +89,7 @@ function draw() {
         }
     }
     bImg.updatePixels();
-    image(bImg, windowWidth/2, 0);
+    image(bImg, windowWidth / 2, 0);
 
 
     oImg.loadPixels();
@@ -106,7 +105,7 @@ function draw() {
         }
     }
     oImg.updatePixels();
-    image(oImg, 0, windowHeight/2);
+    image(oImg, 0, windowHeight / 2);
 
     sImg.loadPixels();
     for (let x = 1; x < img.width; x++) {
@@ -121,7 +120,7 @@ function draw() {
         }
     }
     sImg.updatePixels();
-    image(sImg, windowWidth/2, windowHeight/2);
+    image(sImg, windowWidth / 2, windowHeight / 2);
 
     fill(255, 255, 255);
     textSize(32);
@@ -171,5 +170,5 @@ function fullScreen() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth-15, windowHeight-21);
+    resizeCanvas(windowWidth - 15, windowHeight - 21);
 }

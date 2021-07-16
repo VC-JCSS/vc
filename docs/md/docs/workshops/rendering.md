@@ -1,5 +1,13 @@
 # Rendering
 
-> :P5 lib1=https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js, sketch=/docs/sketches/workshops/rendering/basic.js, width=800, height=550
+<!-- > :P5 lib1=https://cdn.jsdelivr.net/gh/objetos/p5.quadrille.js/p5.quadrille.min.js, sketch=/docs/sketches/workshops/rendering/basic.js, width=800, height=550 -->
+
+## Imágenes
+
+> :P5 sketch=/docs/sketches/workshops/rendering/kernels.js, width=800, height=550
+
+## Videos
+
+> :P5 sketch=/docs/sketches/workshops/rendering/videos.js, width=800,W height=550
 
 > :ToCPrevNext
