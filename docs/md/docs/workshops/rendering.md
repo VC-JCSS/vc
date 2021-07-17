@@ -8,6 +8,6 @@
 
 ## Videos
 
-> :P5 sketch=/docs/sketches/workshops/rendering/videos.js, width=800,W height=550
+> :P5 sketch=/docs/sketches/workshops/rendering/videos.js, width=640, height=480
 
 > :ToCPrevNext

@@ -32,8 +32,8 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth - 15, windowHeight - 21);
-
     noLoop();
+
     button = createButton('FullScreen');
     button.attribute('style', 'box-shadow:inset 0px 1px 0px 0px #000000;\n' +
         '\tborder-radius:6px;\n' +

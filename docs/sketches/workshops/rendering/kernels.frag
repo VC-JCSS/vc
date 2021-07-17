@@ -58,7 +58,8 @@ vec4 convolution() {
 
     for (float kx = -1.0; kx <= 1.0; kx++) {
         for (float ky = -1.0; ky <= 1.0; ky++) {
-            vec2 coords = vec2(vTexCoord.x + (kx*horizontalOffset), vTexCoord.y + (ky*horizontalOffset));
+            vec2 coords = vec2(vTexCoord.x + (kx*horizontalOffset), vTexCoord.y + (ky*verticalOffset));
+            // vec2 coord = (2.0 * floor(gl_FragCoord.xy) + 0.5) * vec2(horizontalOffset,ber);
             float r = 0.0;
             float g = 0.0;
             float b = 0.0;
