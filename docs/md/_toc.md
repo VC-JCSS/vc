@@ -4,18 +4,31 @@
 > 
 > > :Collapse label=Imaging & Video
 > >
-> > [Problem Statement](/docs/workshops/imaging/problem)
-> > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
-> > [Image Kernels](/docs/workshops/imaging/kernels)
-> > [Ascii Art](/docs/workshops/imaging/ascii)
-> > [Mosaic](/docs/workshops/imaging/mosaic)
-> > [Conclusions & Future Work ](/docs/workshops/imaging/conclusions)
+> > > :Collapse label=Software
+> > > 
+> > > [Problem Statement](/docs/workshops/imaging/problem)
+> > > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
+> > > [Image Kernels](/docs/workshops/imaging/kernels)
+> > > [Ascii Art](/docs/workshops/imaging/ascii)
+> > > [Mosaic](/docs/workshops/imaging/mosaic)
+> > > [Conclusions & Future Work ](/docs/workshops/imaging/conclusions)
+> > 
+> > > :Collapse label=Hardware
+> > >
 > 
-> [Rendering](/docs/workshops/rendering)
-> [GLobal illumination](/docs/workshops/rendering/global_illumination)
-> [Algovis](/docs/workshops/algovis)
-> [Computer Graphics](/docs/workshops/cg)
-> [HCI](/docs/workshops/hci)
+> > :Collapse label=Rendering
+> >
+> > [Rendering](/docs/workshops/rendering/rendering)
+> >
+> > >
+> > > :Collapse label=GLobal illumination
+> > > 
+> > > [Ambient Occlusion](/docs/workshops/rendering/globalIllumination/ambientOcclusion)
+> > > [SSAO](/docs/workshops/rendering/globalIllumination/SSAO)
+> > > [SSDO](/docs/workshops/rendering/globalIllumination/SSDO)
+> > > [RTAO](/docs/workshops/rendering/globalIllumination/RTAO)
+> >
+>
 
 > :Collapse label=P5 Code Snippets
 > 
