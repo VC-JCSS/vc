@@ -40,4 +40,6 @@ La Imagen 2.4 (izquierda) muestra un ejemplo con [N=4](:Formula) puntos de muest
 > L_{dir}(P)=\sum_{i=1}^{N} \frac{\rho}{\pi}L_{pixel}(1-V(\omega_i))\frac{cos\theta_{s_i} cos\theta_{r_i}}{d_i^{2}}.
 > ```
 
+Tomado de: https://people.mpi-inf.mpg.de/~ritschel/Papers/SSDO.pdf
+
 > :ToCPrevNext

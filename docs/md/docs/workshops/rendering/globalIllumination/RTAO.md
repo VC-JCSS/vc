@@ -46,4 +46,6 @@ Cuando utiliza el trazado de rayos, es fácil ver cómo genera ruido visual en s
 
 El trazado de rayos en tiempo real ahora es asequible, especialmente con efectos de bajo impacto (rendimiento) como la oclusión ambiental. A pesar de ser costoso en todos los aspectos, lo más probable es que el AO con trazado de rayos sea asequible en la mayoría de los proyectos,
 
+Tomado de: https://thegamedev.guru/unity-ray-tracing/ambient-occlusion-rtao/#the-ray-traced-ao-parameters-you-can-play-with
+
 > :ToCPrevNext
