@@ -39,10 +39,10 @@ let sharpen = [
 
 
 function preload() {
-    shaderEmboss = loadShader("/vc/docs/sketches/workshops/rendering/shader.vert", "/vc/docs/sketches/workshops/rendering/kernels.frag");
-    shaderBlur = loadShader("/vc/docs/sketches/workshops/rendering/shader.vert", "/vc/docs/sketches/workshops/rendering/kernels.frag");
-    shaderOutline = loadShader("/vc/docs/sketches/workshops/rendering/shader.vert", "/vc/docs/sketches/workshops/rendering/kernels.frag");
-    shaderSharpen = loadShader("/vc/docs/sketches/workshops/rendering/shader.vert", "/vc/docs/sketches/workshops/rendering/kernels.frag");
+    shaderEmboss = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
+    shaderBlur = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
+    shaderOutline = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
+    shaderSharpen = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg", () => img.resize(windowWidth / 2, windowHeight / 2));
 }
 

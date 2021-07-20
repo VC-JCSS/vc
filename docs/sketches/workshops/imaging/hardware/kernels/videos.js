@@ -30,7 +30,7 @@ let sharpen = [
 ];
 
 function preload() {
-    shaderVideo = loadShader("/vc/docs/sketches/workshops/rendering/shader.vert", "/vc/docs/sketches/workshops/rendering/kernels.frag");
+    shaderVideo = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
     video = createVideo("/vc/docs/sketches/fingers.webm");
 }
 
