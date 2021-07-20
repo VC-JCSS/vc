@@ -3,18 +3,19 @@
 > :Collapse label=Workshops
 > 
 > > :Collapse label=Imaging & Video
-> >
 > > > :Collapse label=Software
-> > > 
+> > >
 > > > [Problem Statement](/docs/workshops/imaging/problem)
 > > > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
 > > > [Image Kernels](/docs/workshops/imaging/kernels)
 > > > [Ascii Art](/docs/workshops/imaging/ascii)
 > > > [Mosaic](/docs/workshops/imaging/mosaic)
 > > > [Conclusions & Future Work ](/docs/workshops/imaging/conclusions)
-> > 
+> >
 > > > :Collapse label=Hardware
-> > >
+> > > 
+> > > [Image kernels](/docs/workshops/imaging/hardware/kernels)
+> >
 > 
 > > :Collapse label=Rendering
 > >
