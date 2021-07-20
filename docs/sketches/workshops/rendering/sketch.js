@@ -3,6 +3,7 @@ let cols;
 let windowSize = 700;
 let actualPixels;
 let borderCheckbox;
+let antialiasingCheckbox;
 
 let PixelLength, sLabelPL;
 let labelV0x, sliderV0x, sLabelV0x;
@@ -21,7 +22,7 @@ let quadrille;
 function setup() {
     createCanvas(windowSize, windowSize);
 
-    generateCheckbox('Contorno');
+    generateCheckboxes('Contorno', 'Antialiasing');
     generateLengthLabel('Longitud por pixel ');
     generatePositionSliders();
     generateColorPickers();
@@ -29,11 +30,17 @@ function setup() {
     generateQuadrille();
 }
 
-function generateCheckbox(name) {
-    borderCheckbox = createCheckbox(name, false);
+function generateCheckboxes(firstName, secondName) {
+    borderCheckbox = createCheckbox(firstName, false);
     borderCheckbox.position(10, 10);
     borderCheckbox.style('color', '#ffffff');
     borderCheckbox.changed(() => { if (PixelLength.value() != 1) generateQuadrille(); });
+
+    antialiasingCheckbox = createCheckbox(secondName, false);
+    antialiasingCheckbox.position(10, 230);
+    antialiasingCheckbox.style('color', '#ffffff');
+    antialiasingCheckbox.changed(() => { if (PixelLength.value() <= 35) generateQuadrille(); });
+
 }
 
 function generateLengthLabel(name) {
@@ -182,5 +189,21 @@ function isInside(px, py) {
         return color(r, g, b, 255);
     }
 
+    let val = (PixelLength.value() <= 35 && antialiasingCheckbox.checked()) ? 3 * PixelLength.value() - 115 : 0;
+
+    if (((f01 < 0 && f01 >= val) && f12 >= 0 && f20 >= 0) || (f01 >= 0 && (f12 < 0 && f12 >= val) && f20 >= 0) || (f01 >= 0 && f12 >= 0 && (f20 < 0 && f20 >= val))) {
+
+        let negativeValue = Math.abs(Math.min(f01, f12, f20));
+        let delta = f20 + f01 + f12;
+        let l0 = (f20 < 0) ? 0 : f20 / delta;
+        let l1 = (f01 < 0) ? 0 : f01 / delta;
+        let l2 = (f12 < 0) ? 0 : f12 / delta;
+
+        let r = red(c0.color()) * l0 + red(c1.color()) * l1 + red(c2.color()) * l2;
+        let g = green(c0.color()) * l0 + green(c1.color()) * l1 + green(c2.color()) * l2;
+        let b = blue(c0.color()) * l0 + blue(c1.color()) * l1 + blue(c2.color()) * l2;
+
+        return color(r, g, b, (255 - ((255 * negativeValue) / -val)));
+    }
     return color(0);
 }
