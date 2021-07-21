@@ -19,7 +19,6 @@
 > 
 > > :Collapse label=Rendering
 > >
-> > [Rendering](/docs/workshops/rendering/rendering)
 > >
 > > >
 > > > :Collapse label=GLobal illumination
@@ -29,6 +28,7 @@
 > > > [SSDO](/docs/workshops/rendering/globalIllumination/SSDO)
 > > > [RTAO](/docs/workshops/rendering/globalIllumination/RTAO)
 > >
+> > [Rasterisation](/docs/workshops/rendering/rendering)
 >
 
 > :Collapse label=P5 Code Snippets
