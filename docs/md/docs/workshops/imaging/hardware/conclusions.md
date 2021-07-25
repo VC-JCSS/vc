@@ -20,8 +20,11 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 > > 
 > 
 > > :Tab title=Ascii Art
-> > 
-> > Holaaaaaaaaaaaaaaaaaaaaaaaaa
+> >
+> > * La carga de la imagen con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.87%**.
+> > * La carga inicial del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **81.4%**.
+> > * La carga de cada frame del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.5%**.
+>
 > 
 > > :Tab title=Mosaic
 > > 

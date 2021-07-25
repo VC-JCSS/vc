@@ -27,6 +27,7 @@ function setup() {
 }
 
 function draw() {
+    console.time("GrayScale image");
     img.resize(windowWidth/2, windowHeight/2);
     eImg = createImage(img.width, img.height);
     bImg = createImage(img.width, img.height);
@@ -80,6 +81,7 @@ function draw() {
     }
     sImg.updatePixels();
     image(sImg, windowWidth/2, windowHeight/2);
+    console.timeEnd("GrayScale image");
 }
 
 function gammaCorrected(pix) {
