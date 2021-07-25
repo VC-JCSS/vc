@@ -3,18 +3,16 @@ let shaderVideo;
 let videofinal;
 let interfaz;
 
-let v = 1.0 / 9.0;
-
 let emboss = [
     [-2, -1, 0],
     [-1, 1, 1],
     [0, 1, 2]
 ];
 
-let blurM = [
-    [v, v, v],
-    [v, v, v],
-    [v, v, v]
+let topSobel = [
+    [1, 2, 1],
+    [0, 0, 0],
+    [-1, -2, -1]
 ];
 
 let outline = [
@@ -28,6 +26,8 @@ let sharpen = [
     [-1, 5, -1],
     [0, -1, 0]
 ];
+
+
 
 function preload() {
     shaderVideo = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
@@ -68,12 +68,16 @@ function setup() {
 }
 
 function draw() {
+    console.time("videos");
+
     filterVideo(emboss, 1);
-    filterVideo(blurM, 2);
+    filterVideo(topSobel, 2);
     filterVideo(outline, 3);
     filterVideo(sharpen, 4);
 
     image(interfaz, 0, 0);
+
+    console.timeEnd("videos");
 }
 
 function filterVideo(matrix, nVideo) {

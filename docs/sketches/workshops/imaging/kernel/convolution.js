@@ -52,6 +52,8 @@ function setup() {
 
 function draw() {
 
+    console.time("kernels");
+
     img.resize(windowWidth / 2, windowHeight / 2);
 
     img.loadPixels();
@@ -129,6 +131,7 @@ function draw() {
     text('Blur', 730, 30);
     text('Sharpen', 665, 310);
 
+    console.timeEnd("kernels");
 }
 
 function convolution(x, y, matrix) {

@@ -1,12 +1,12 @@
 let img;
 
 let shaderEmboss;
-let shaderBlur;
+let shaderTopSobel;
 let shaderOutline;
 let shaderSharpen;
 
 let imgEmboss;
-let imgBlur;
+let imgTopSobel;
 let imgOutline;
 let imgSharpen;
 
@@ -18,10 +18,10 @@ let emboss = [
     [0, 1, 2]
 ];
 
-let blurM = [
-    [v, v, v],
-    [v, v, v],
-    [v, v, v]
+let topSobel = [
+    [1, 2, 1],
+    [0, 0, 0],
+    [-1, -2, -1]
 ];
 
 let outline = [
@@ -40,7 +40,7 @@ let sharpen = [
 
 function preload() {
     shaderEmboss = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
-    shaderBlur = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
+    shaderTopSobel = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
     shaderOutline = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
     shaderSharpen = loadShader("/vc/docs/sketches/workshops/imaging/hardware/kernels/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/kernels/kernels.frag");
     img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda.jpg", () => img.resize(windowWidth / 2, windowHeight / 2));
@@ -66,14 +66,16 @@ function setup() {
     button.mousePressed(fullScreen);
 
     imgEmboss = shaderImage(shaderEmboss, emboss);
-    imgBlur = shaderImage(shaderBlur, blurM);
+    imgTopSobel = shaderImage(shaderTopSobel, topSobel);
     imgOutline = shaderImage(shaderOutline, outline);
     imgSharpen = shaderImage(shaderSharpen, sharpen);
 }
 
 function draw() {
+    console.time("kernels");
+
     image(imgEmboss, 0, 0, windowWidth / 2, windowHeight / 2);
-    image(imgBlur, windowWidth / 2, 0, windowWidth / 2, windowHeight / 2);
+    image(imgTopSobel, windowWidth / 2, 0, windowWidth / 2, windowHeight / 2);
     image(imgOutline, 0, windowHeight / 2, windowWidth / 2, windowHeight / 2);
     image(imgSharpen, windowWidth / 2, windowHeight / 2, windowWidth / 2, windowHeight / 2);
 
@@ -81,8 +83,10 @@ function draw() {
     textSize(32);
     text('Emboss', 270, 30);
     text('Outline', 280, 315);
-    text('Blur', 730, 30);
+    text('Top Sobel', 644, 30);
     text('Sharpen', 665, 315);
+
+    console.timeEnd("kernels");
 }
 
 function shaderImage(shader, matrix) {

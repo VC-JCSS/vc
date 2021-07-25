@@ -30,11 +30,11 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth-15, windowHeight-21);
+    createCanvas(windowWidth - 15, windowHeight - 21);
 
     noLoop();
     button = createButton('FullScreen');
-    button.attribute('style','box-shadow:inset 0px 1px 0px 0px #000000;\n' +
+    button.attribute('style', 'box-shadow:inset 0px 1px 0px 0px #000000;\n' +
         '\tborder-radius:6px;\n' +
         '\tborder:1px solid #000000;\n' +
         '\tdisplay:inline-block;\n' +
@@ -44,13 +44,13 @@ function setup() {
         '\tfont-size:15px;\n' +
         '\tfont-weight:bold;\n' +
         '\tpadding:6px 24px;\n' +
-        '\ttext-decoration:none;\n' );
+        '\ttext-decoration:none;\n');
     button.position(3, 3);
     button.mousePressed(fullScreen);
 }
 
 function draw() {
-    img.resize(windowWidth/2, windowHeight/2);
+    img.resize(windowWidth / 2, windowHeight / 2);
     img.loadPixels();
 
     tImg = createImage(img.width, img.height);
@@ -86,7 +86,7 @@ function draw() {
         }
     }
     rImg.updatePixels();
-    image(rImg, windowWidth/2, 0);
+    image(rImg, windowWidth / 2, 0);
 
 
     bImg.loadPixels();
@@ -102,7 +102,7 @@ function draw() {
         }
     }
     bImg.updatePixels();
-    image(bImg, 0, windowHeight/2);
+    image(bImg, 0, windowHeight / 2);
 
     lImg.loadPixels();
     for (let x = 1; x < img.width; x++) {
@@ -117,7 +117,7 @@ function draw() {
         }
     }
     lImg.updatePixels();
-    image(lImg, windowWidth/2, windowHeight/2);
+    image(lImg, windowWidth / 2, windowHeight / 2);
 
     fill(255, 255, 255);
     textSize(32);
@@ -125,7 +125,7 @@ function draw() {
     text('Bottom', 280, 310);
     text('Right', 710, 30);
     text('Left', 730, 310);
-  
+
 }
 
 function convolution(x, y, matrix) {
@@ -167,5 +167,5 @@ function fullScreen() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth-15, windowHeight-21);
+    resizeCanvas(windowWidth - 15, windowHeight - 21);
 }
