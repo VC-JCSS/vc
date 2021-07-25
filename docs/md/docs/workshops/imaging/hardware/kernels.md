@@ -423,14 +423,5 @@ Utilizando los conceptos explicados en laboratorios anteriores, se hace la convo
 
 <br/>
 
-Con este ejercicio se notaron 2 ventajas que se tiene al utilizar shaders:
-
-1. Se pueden utilizar el mismo vertex y fragment shader tanto para imagenes como para videos, lo cual ahorra bastante tiempo y esfuerzo al programador. Esto gracias a que los shaders procesan las imágenes y los videos de igual forma.
-
-2. El renderizado utilizando la GPU es mucho más eficiente computacionalmente con respecto al renderizado con la CPU. Si bien la velocidad de la renderización con GPU depende completamente del poder de procesamiento que esta tenga, los siguientes valores ayudan a entender la diferencia de la eficiencia entre ambos métodos de renderización:
-
-    * La carga de la imagen con la CPU dura en promedio **1621 ms**, mientras que con la GPU dura en promedio **2 ms**. Mejora en un **99.87%**.
-    * La carga inicial del video con la CPU dura en promedio **188 ms**, mientras que con la GPU dura en promedio **35 ms**. Mejora en un **81.4%**.
-    * La carga de cada frame del video con la CPU dura en promedio **120 ms**, mientras que con la GPU dura en promedio **0.6 ms**. Mejora en un **99.5%**.
 
 > :ToCPrevNext
