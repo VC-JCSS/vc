@@ -16,7 +16,7 @@
 > > > 
 > > > [Problem Statement](/docs/workshops/imaging/hardware/problem)
 > > > [Background](/docs/workshops/imaging/hardware/background)
-> > > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
+> > > [Gray](/docs/workshops/imaging/hardware/grayScale)
 > > > [Kernels](/docs/workshops/imaging/hardware/kernels)
 > > > [Ascii Art](/docs/workshops/imaging/ascii)
 > > > [Mosaic](/docs/workshops/imaging/mosaic)
