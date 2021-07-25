@@ -14,7 +14,13 @@
 > >
 > > > :Collapse label=Hardware
 > > > 
-> > > [Image kernels](/docs/workshops/imaging/hardware/kernels)
+> > > [Problem Statement](/docs/workshops/imaging/hardware/problem)
+> > > [Background](/docs/workshops/imaging/hardware/background)
+> > > [Basic - Gray Scale](/docs/workshops/imaging/basic_gray)
+> > > [Kernels](/docs/workshops/imaging/hardware/kernels)
+> > > [Ascii Art](/docs/workshops/imaging/ascii)
+> > > [Mosaic](/docs/workshops/imaging/mosaic)
+> > > [Conclusions & Future Work ](/docs/workshops/imaging/hardware/conclusions)
 > >
 > 
 > > :Collapse label=Rendering

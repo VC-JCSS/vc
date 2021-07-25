@@ -40,6 +40,8 @@ function setup() {
 
 function draw() {
 
+    console.time("videos");
+
     fingers.loadPixels();
     loadPixels();
 
@@ -122,6 +124,7 @@ function draw() {
     strokeWeight(5);
     line(320, 0, 320, 480);
 
+    console.timeEnd("videos");
 }
 
 function convolution(x, y, matrix) {
