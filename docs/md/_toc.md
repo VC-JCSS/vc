@@ -14,6 +14,7 @@
 > >
 > > > :Collapse label=Hardware
 > > > 
+> > > [Gray](/docs/workshops/imaging/hardware/grayScale)
 > > > [Image kernels](/docs/workshops/imaging/hardware/kernels)
 > >
 > 
