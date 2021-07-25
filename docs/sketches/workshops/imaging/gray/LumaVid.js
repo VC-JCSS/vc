@@ -12,6 +12,7 @@ function setup() {
 }
 
 function draw() {
+    console.time("GrayScale vid luma");
     image(fingers,0,0);
     fingers.loadPixels();
     loadPixels();
@@ -27,6 +28,7 @@ function draw() {
     }
 
     updatePixels();
+    console.timeEnd("GrayScale vid luma");
 }
 
 function mousePressed() {
