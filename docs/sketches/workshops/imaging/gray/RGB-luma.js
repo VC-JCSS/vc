@@ -114,6 +114,15 @@ function sRGBtoLin(colorChannel) {
     }
 }
 
+function gam_sRGB(v) {
+    if(v<=0.0031308){
+        v *= 12.92;
+    } else {
+        v = (1.055*(Math.pow(v,1.0/2.4)))-0.055;
+    }
+    return v*255;
+}
+
 function fullScreen() {
     let fs = fullscreen();
     fullscreen(!fs);
