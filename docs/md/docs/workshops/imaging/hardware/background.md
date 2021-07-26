@@ -28,3 +28,5 @@ En una implementación real de los shaders, se necesita tener un entorno de desa
 Los shaders son escritos en el leguaje de programación especificado por la API utilizada, pues esta última se encarga de traducir los shaders implementados a instrucciones que pueda seguir la tarjeta gráfica. Por ejemplo, el lenguaje utilizado en Vulkan es SPIR-V y en Direct3D es HLSL. OpenGL por su lado puede utilizar GLSL o SPIR-V de acuerdo con la preferencia del programador.
 
 Para el desarrollo de este laboratorio, debido a su buena integración con p5.js se utilizará la API WebGL, la cual es una implementación de OpenGL para navegadores web y utiliza el legunaje GLSL.
+
+> :ToCPrevNext
