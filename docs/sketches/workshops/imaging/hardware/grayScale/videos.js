@@ -29,8 +29,8 @@ function setup() {
     interfaz.fill(255);
     interfaz.textSize(25);
     interfaz.text('Original', 220, 35);
-    interfaz.text('Negative', 230, 275);
-    interfaz.text('Luma', 520, 35);
+    interfaz.text('Negative', 520, 35);
+    interfaz.text('Luma', 230, 275);
     interfaz.text('RGB', 535, 275);
 
     stroke(255, 255, 255);
