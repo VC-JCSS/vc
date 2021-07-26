@@ -1,6 +1,6 @@
 # Mosaic - Images
 
-Previamente se realizó la implementación de un mosaico usando las herramientas de P5.JS, si bien a nivel visual los resultados fueron bastantes sorprendentes, a nivel de eficiencia fueron bastantes deficientes, uno de los principales problemas fue el cambio de resolución lo cual resulto ineficiente y molesto para el usuario. Además, la implementación que usó un video fue realmente decepcionante y se decidió eliminar ya que afectaba el proyecto en general. 
+Previamente se realizó la implementación de un mosaico usando las herramientas de p5.js, si bien a nivel visual los resultados fueron bastantes sorprendentes, a nivel de eficiencia fueron bastantes deficientes, uno de los principales problemas fue el cambio de resolución lo cual resulto ineficiente y molesto para el usuario. Además, la implementación que usó un video fue realmente decepcionante y se decidió eliminar ya que afectaba el desempeño del proyecto en general. 
 
 <br/>
 En este punto se tienen tres retos principales, primero la implementación del mosaico usando el concepto de Shaders, segundo una mejora en la eficiencia del programa, y tercero la implementación del video. Los resultados de estos retos fueron los siguientes:
@@ -12,7 +12,7 @@ En este punto se tienen tres retos principales, primero la implementación del m
 
 
 ### Code
-A continuacion no se muestran algunos fragmentos de codigo que permitiran comprender los detalles de la solucion planteada.
+A continuacion se muestran algunos fragmentos de código que permitirán comprender los detalles de la solucion planteada.
 > :Tabs
 > > :Tab title=Distancia Delta
 > >
