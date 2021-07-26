@@ -24,7 +24,7 @@ function preload() {
     "/vc/docs/sketches/workshops/imaging/hardware/asciiArt/shader.vert",
     "/vc/docs/sketches/workshops/imaging/hardware/asciiArt/asciiArt.frag"
   );
-  img = loadImage("/vc/docs/sketches/workshops/imaging/BabyYoda2.jpg");
+  img = loadImage("/vc/docs/sketches/workshops/imaging/hardware/mosaic/duck.png");
   symbols = loadImage(
     "/vc/docs/sketches/workshops/imaging/hardware/asciiArt/symbols/0.png"
   );
@@ -102,9 +102,9 @@ function setup() {
 
 function draw() {
   console.time("Ascii Art image");
-  image(img, 0, 0, windowWidth, windowHeight);
-  rect(windowWidth/2, 0, windowWidth/2, windowHeight);
-  image(imgLuma, windowWidth / 2, 0, windowWidth, windowHeight);
+  //image(img, 0, 0, windowWidth, windowHeight);
+  //rect(windowWidth/2, 0, windowWidth/2, windowHeight);
+  image(imgLuma, 0, 0, windowWidth, windowHeight);
   fill(255, 255, 255);
   console.timeEnd("GrayScale image");
 }
@@ -132,7 +132,7 @@ function shaderImage(shader) {
   shader.setUniform("symbols15", symbols15);
   shader.setUniform("verticalOffset", 1 / img.height);
   shader.setUniform("horizontalOffset", 1 / img.width);
-  shader.setUniform("resolution", 160);
+  shader.setUniform("resolution", 200);
   shader.setUniform("debug", debug);
   graphic.beginShape();
   graphic.vertex(-width / 2, -height / 2, 0, 0);
