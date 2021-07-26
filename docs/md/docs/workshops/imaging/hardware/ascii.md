@@ -7,11 +7,8 @@ A continuación se muestra la imagen original y los 3 filtros implementados como
 > :Tabs
 > > :Tab title=Resultado Imagen
 > >
-> > ESTO FALTAAAAAAAAAA NO EXPONGAMOS DE PRIMEROS
-> >
 > > > :P5 sketch=/docs/sketches/workshops/imaging/hardware/asciiArt/asciiArt.js, width=800, height=550
 >
-> >
 > > :Tab title=Codigo P5.js
 > >
 > > ``` js | asciiArt.js
@@ -167,7 +164,7 @@ A continuación se muestra la imagen original y los 3 filtros implementados como
 > >function windowResized() {
 > >  resizeCanvas(windowWidth - 15, windowHeight - 21);
 > >}
-
+> >
 > > ```
 > 
 > > :Tab title=Fragment shader

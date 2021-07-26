@@ -6,7 +6,7 @@
 > >
 > > El resultado se muestra a continuación:
 > >
-> > > :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/asciiArt.js
+> > > :P5 width = 800, height = 550, sketch = /docs/sketches/workshops/imaging/hardware/asciiArt/asciiArt.js
 >
 > > :Tab title=Background
 > >

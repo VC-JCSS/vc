@@ -18,7 +18,7 @@
 > > > [Background](/docs/workshops/imaging/hardware/background)
 > > > [Gray](/docs/workshops/imaging/hardware/grayScale)
 > > > [Kernels](/docs/workshops/imaging/hardware/kernels)
-> > > [Ascii Art](/docs/workshops/imaging/ascii)
+> > > [Ascii Art](/docs/workshops/imaging/hardware/ascii)
 > > > [Mosaic](/docs/workshops/imaging/hardware/mosaic)
 > > > [Conclusions & Future Work ](/docs/workshops/imaging/hardware/conclusions)
 > >

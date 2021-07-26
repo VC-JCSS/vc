@@ -1,7 +1,7 @@
 let fingers;
 
 function preload() {
-    fingers = createVideo("/vc/docs/sketches/fingers.webm");
+    fingers = createVideo("/vc/docs/sketches/UseTheForce.mp4");
 }
 
 function setup() {
