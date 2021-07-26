@@ -15,11 +15,11 @@ Los procesos que se muestran de color azul se conocen como Shaders, y son aquell
 
 ## Vertex Shader
 
-Son los mismos en todos los codigos
+El Vertex Shader es la etapa del pipeline en la que se maneja el procesamiento individual de los vértices, este recibe la información de un vértice (Compuesta por su posción y color), la procesa y genera como salida otro vértice que será utilizado por la siguiente etapa (Shape Assembly). En este laboratorio se utilizará el mismo Vertex Shader para todos los problemas, pues no se requiere modificar los atributos de posición y color de los vertices en estos. El Vertex Shader que se utilizará, recibe los datos del vértice y los pasa al Shape Assembly sin modificarlos.
 
 ## Fragment Shader
 
-Son lo que varía para procesar las imágenes
+El Fragment Shader es la etapa del pipeline en la que se procesan los fragmentos (O pixeles) de la imagen. En esta etapa se reciben los fragmentos (O pixeles) generados por la etapa anterior (Rasterization), y se define el color que tendrán de acuerdo con el código utilizado. Para ello, se puede envíar al Fragment Shader información de ser necesario, información como por ejemplo, la textura que define el color de cada pixel. En estos Shaders se encontrarán las implementaciones de cada una de las soluciónes a los problemas mencionados en el Problem Statement.
 
 ## Application Programming Interfaces
 

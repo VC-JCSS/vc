@@ -19,7 +19,7 @@
 > > > [Gray](/docs/workshops/imaging/hardware/grayScale)
 > > > [Kernels](/docs/workshops/imaging/hardware/kernels)
 > > > [Ascii Art](/docs/workshops/imaging/ascii)
-> > > [Mosaic](/docs/workshops/imaging/mosaic)
+> > > [Mosaic](/docs/workshops/imaging/hardware/mosaic)
 > > > [Conclusions & Future Work ](/docs/workshops/imaging/hardware/conclusions)
 > >
 > 
