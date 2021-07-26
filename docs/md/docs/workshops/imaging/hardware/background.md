@@ -15,11 +15,11 @@ Los procesos que se muestran de color azul se conocen como Shaders, y son aquell
 
 ## Vertex Shader
 
-Son los mismos en todos los codigos
+El Vertex Shader es la etapa del pipeline en la que se maneja el procesamiento individual de los vértices, este recibe la información de un vértice (Compuesta por su posción y color), la procesa y genera como salida otro vértice que será utilizado por la siguiente etapa (Shape Assembly). En este laboratorio se utilizará el mismo Vertex Shader para todos los problemas, pues no se requiere modificar los atributos de posición y color de los vertices en estos. El Vertex Shader que se utilizará, recibe los datos del vértice y los pasa al Shape Assembly sin modificarlos.
 
 ## Fragment Shader
 
-Son lo que varía para procesar las imágenes
+El Fragment Shader es la etapa del pipeline en la que se procesan los fragmentos (O pixeles) de la imagen. En esta etapa se reciben los fragmentos (O pixeles) generados por la etapa anterior (Rasterization), y se define el color que tendrán de acuerdo con el código utilizado. Para ello, se puede envíar al Fragment Shader información de ser necesario, información como por ejemplo, la textura que define el color de cada pixel. En estos Shaders se encontrarán las implementaciones de cada una de las soluciónes a los problemas mencionados en el Problem Statement.
 
 ## Application Programming Interfaces
 
@@ -28,3 +28,5 @@ En una implementación real de los shaders, se necesita tener un entorno de desa
 Los shaders son escritos en el leguaje de programación especificado por la API utilizada, pues esta última se encarga de traducir los shaders implementados a instrucciones que pueda seguir la tarjeta gráfica. Por ejemplo, el lenguaje utilizado en Vulkan es SPIR-V y en Direct3D es HLSL. OpenGL por su lado puede utilizar GLSL o SPIR-V de acuerdo con la preferencia del programador.
 
 Para el desarrollo de este laboratorio, debido a su buena integración con p5.js se utilizará la API WebGL, la cual es una implementación de OpenGL para navegadores web y utiliza el legunaje GLSL.
+
+> :ToCPrevNext

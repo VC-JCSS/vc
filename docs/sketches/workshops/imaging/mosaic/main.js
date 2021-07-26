@@ -51,6 +51,8 @@ function setup() {
 }
 
 function draw() {
+    
+    console.time("Mosaic: Software")
     img.resize(windowWidth, windowHeight);
     image(img, 0, 0);
 
@@ -96,6 +98,7 @@ function draw() {
     slider.removeAttribute('disable');
     
     noLoop();
+    console.timeEnd("Mosaic: Software")
 }
 
 
