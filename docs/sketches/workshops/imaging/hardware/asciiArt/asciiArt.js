@@ -106,7 +106,7 @@ function draw() {
   //rect(windowWidth/2, 0, windowWidth/2, windowHeight);
   image(imgLuma, 0, 0, windowWidth, windowHeight);
   fill(255, 255, 255);
-  console.timeEnd("GrayScale image");
+  console.timeEnd("Ascii Art image");
 }
 
 function shaderImage(shader) {

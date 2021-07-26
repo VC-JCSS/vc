@@ -46,6 +46,7 @@ function setup() {
 }
 
 function draw() {
+  console.time("Ascii Art image");
   img.resize(windowWidth-15, windowHeight-21);
   background(255);
 
@@ -62,6 +63,7 @@ function draw() {
     }
   }
   slider.removeAttribute('disable');
+  console.timeEnd("Ascii Art image");
 }
 
 function scanBlock(x, y) {
