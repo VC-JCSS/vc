@@ -101,12 +101,12 @@ function setup() {
 }
 
 function draw() {
-  console.time("Ascii Art image");
   image(img, 0, 0, windowWidth, windowHeight);
   rect(windowWidth/2, 0, windowWidth/2, windowHeight);
   image(imgLuma, windowWidth / 2, 0, windowWidth, windowHeight);
+  console.time("Ascii Art image");
   fill(255, 255, 255);
-  console.timeEnd("GrayScale image");
+  console.timeEnd("Ascii Art image");
 }
 
 function shaderImage(shader) {

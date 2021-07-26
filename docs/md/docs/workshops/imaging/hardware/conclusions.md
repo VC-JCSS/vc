@@ -10,8 +10,9 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 > > :Tab title=Gray Scale
 > >
 > > * La carga de la imagen con la CPU dura en promedio **160 ms**, mientras que con la GPU dura en promedio **2 ms**. Mejora en un **98.75%**.
-> > * La carga inicial del video con la CPU dura en promedio **11 ms y 9ms** para dos videos separados de Luma y RGB, mientras que con la GPU duran en promedio **40 ms**. Mejora en un **81.4%**.
-> > * La carga de cada frame del video con la CPU dura en promedio **1.5 ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.5%**.
+> > * La carga inicial del video con la CPU dura en promedio **10 ms**, mientras que con la GPU dura en promedio **40 ms**. Mejora en un **81.4%**.
+> > * La carga de cada frame del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.5%**.
+> >
 > 
 > > :Tab title=Kernels
 > > 
@@ -23,9 +24,8 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 > 
 > > :Tab title=Ascii Art
 > >
-> > * La carga de la imagen con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.87%**.
-> > * La carga inicial del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **81.4%**.
-> > * La carga de cada frame del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.5%**.
+> > * La carga de la imagen con la CPU dura en promedio **160 ms**, mientras que con la GPU dura en promedio **3 ms**. Mejora en un **97.32%**.
+
 >
 > 
 > > :Tab title=Mosaic
@@ -34,21 +34,9 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 > > * La carga del mosaico para la maxima resolucion con la CPU dura en promedio **1300ms**, mientras que con la GPU dura en promedio **400ms**. Mejora en un **69.2%**.
 >
 
-<!-- # Conclusions & Future Work
+# Conclusions & Future Work
 
-Se pueden apreciar varias caracteristicas comunes a las aplicaciones planteadas. La versatilidad de las aplicaciones es una caracteristica fundamental identificada. Inicialmente, el método de procesamiento del Kernel tiene distintas utilidades en sí mismo, ya que nos permite, además de aplicar filtros a las imágenes, obtener información fundamental de una imagen, facilitando así su estudio y análisis en otras ramas del análsis de estas. 
-<br/>
-<br/>
-Por otro lado, el análisis de imagenes por medio de bloques de información teniendo en cuenta su brillo, puede ser de útilidad para la obtención de información de una imagen. Además, esta clase de análisis nos brinda distintas posibilidades de aplicación, como la representación de imagenes a través de caractéres ASCII (ASCII Art) o los mosaicos de imagenes.
-En este caso, como mejora a la implementación se propone la automatización de la función selectCharacter, de modo que analice todos los caracteres ASCII posibles, y seleccione cual simbolo representa mejor un bloque de información.
-<br/>
-<br/>
-Esta última aplicación, que analiza una imagen y genera un mosaico de la misma a partir de otras imagenes, hace uso de un mecanismo de obtención del color denomínate que resulta resulta simple, efectivo y elegante. Se destaca en este caso particular el reto de la obtención de las imagenes, ya que el color dominante de una zona puede variar ampliamente. Dentro de la experimentación de esta aplicación se realizaron pruebas haciendo uso de una API de obtención de imagenes, pero dada la cantidad de solicitudes realizadas, se convirtió en una opción inviable a la hora de escalar a imagenes de un tamaño más grande. Sin embargo, la alternativa de estandarizar los colores en el formato HTML y el uso de la distancia delta para discretizar resulta altamente efectivo. Como futuro trabajo se proponen las siguientes ideas.
-
-* Si bien la distancia delta es una medida efectiva no deja de ser una simple distancia euclidiana, una mejora en el trabajo podría ser trabajar una medida más precisa de acuerdo con el contexto. 
-
-
-* Hacer uso de una API de pago mejoraría considerablemente la aplicación implementada, ya que permitiría personalizar un mosaico con una mayor gama de posibilidades. La implementación de una API que pueda proveer las imagenes solicitadas lograría el mismo resultado, según las pruebas realizadas.  -->
+Con lo encontrado en este laboratorio se adquirieron los conocimientos para aplicar distintos algoritmos de computación gráfica de manera rápida y eficiente. Por lo tanto, un trabajo futuro puede ser la profundización en las tecnologías ya estandarizadas, ya que tienen un potencial apliamente extendido y una comunidad que soporta estas tecnologías. Además, un entendimiento más profundo en hardware como tal puede ampliar el espectro de posibilidades de investigación. 
 
 > :ToCPrevNext
 
