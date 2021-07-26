@@ -401,7 +401,6 @@ El resultado de todo el proceso es el siguiente
 ## Referencia
 Herramienta usada para creacion del sprite [LINK](https://www.filesmerge.com/merge-images?combine_mode=fixed-cols&cols=10&output_fmt=PNG)
 
-> :P5 sketch=/docs/sketches/workshops/imaging/hardware/mosaic/index.js, width=800, height=450
 
 
 > :ToCPrevNext
