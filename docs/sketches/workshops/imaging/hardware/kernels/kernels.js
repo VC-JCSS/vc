@@ -83,7 +83,7 @@ function draw() {
     textSize(32);
     text('Emboss', windowWidth/2 - 120, 30);
     text('Top Sobel', windowWidth - 160, 30);
-    text('Outline', windowWidth/2 - 100, windowHeight / 2 + 30);
+    text('Outline', windowWidth/2 - 105, windowHeight / 2 + 30);
     text('Sharpen', windowWidth - 140, windowHeight / 2 + 30);
 
     console.timeEnd("kernels");
