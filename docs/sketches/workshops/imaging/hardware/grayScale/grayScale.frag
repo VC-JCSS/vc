@@ -2,15 +2,13 @@ precision mediump float;
 uniform sampler2D texture;
 uniform int grayType;
 
-// B. varying variables are defined by the shader programmer:
-// vertex color
 varying vec4 vVertexColor;
 
 vec4 textureColor;
 
 float luma;
 float average;
-// interpolated texcoord (same name as in vertex shader)
+
 varying vec2 vTexCoord;
 
 float sRGBtoLin(in float colorChannel) {

@@ -81,12 +81,13 @@ function draw() {
 
     fill(255, 255, 255);
     textSize(32);
-    text('Emboss', 270, 30);
-    text('Outline', 280, 315);
-    text('Top Sobel', 644, 30);
-    text('Sharpen', 665, 315);
+    text('Emboss', windowWidth/2 - 120, 30);
+    text('Outline', windowWidth - 120, 30);
+    text('Top Sobel', windowWidth/2 - 150, windowHeight / 2 + 30);
+    text('Sharpen', windowWidth - 140, windowHeight / 2 + 30);
 
     console.timeEnd("kernels");
+
 }
 
 function shaderImage(shader, matrix) {

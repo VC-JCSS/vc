@@ -1,33 +1,6 @@
 let video;
 let shaderVideo;
-let videofinal;
 let interfaz;
-
-let v = 1.0 / 9.0;
-
-let emboss = [
-    [-2, -1, 0],
-    [-1, 1, 1],
-    [0, 1, 2]
-];
-
-let blurM = [
-    [v, v, v],
-    [v, v, v],
-    [v, v, v]
-];
-
-let outline = [
-    [-1, -1, -1],
-    [-1, 8, -1],
-    [-1, -1, -1]
-];
-
-let sharpen = [
-    [0, -1, 0],
-    [-1, 5, -1],
-    [0, -1, 0]
-];
 
 let pred = 1;
 let negative = 2;
@@ -73,12 +46,14 @@ function setup() {
 }
 
 function draw() {
+    //console.time("GrayScale video");
     filterVideo(pred, 1);
     filterVideo(negative, 2);
     filterVideo(luma, 3);
     filterVideo(rgb, 4);
 
     image(interfaz, 0, 0);
+    //console.timeEnd("GrayScale video");
 }
 
 function filterVideo(grayType, nVideo) {

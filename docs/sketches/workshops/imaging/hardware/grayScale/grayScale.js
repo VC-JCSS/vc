@@ -15,10 +15,6 @@ let negative = 2;
 let luma = 3;
 let rgb = 4;
 
-let v = 1.0 / 9.0;
-
-
-
 function preload() {
     shaderPred = loadShader("/vc/docs/sketches/workshops/imaging/hardware/grayScale/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/grayScale/grayScale.frag");
     shaderNegative = loadShader("/vc/docs/sketches/workshops/imaging/hardware/grayScale/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/grayScale/grayScale.frag");
@@ -53,7 +49,7 @@ function setup() {
 }
 
 function draw() {
-
+    console.time("GrayScale image");
     image(imgPred, 0, 0, windowWidth / 2, windowHeight / 2);
     image(imgNegative, windowWidth / 2, 0, windowWidth / 2, windowHeight / 2);
     image(imgLuma, 0, windowHeight / 2, windowWidth / 2, windowHeight / 2);
@@ -61,10 +57,12 @@ function draw() {
 
     fill(255, 255, 255);
     textSize(32);
-    text('Emboss', 0, 0);
-    text('Outline', windowWidth / 2, 0);
-    text('Blur', 0, windowHeight / 2);
-    text('Sharpen', windowWidth / 2, windowHeight / 2);
+    text('Original', windowWidth/2 - 120, 30);
+    text('Negative', windowWidth - 150, 30);
+    text('Luma', windowWidth/2 - 90, windowHeight / 2 + 30);
+    text('RGB', windowWidth - 90, windowHeight / 2 + 30);
+
+    console.timeEnd("GrayScale image");
 }
 
 function shaderImage(shader, grayType) {
