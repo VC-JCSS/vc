@@ -30,8 +30,8 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 > 
 > > :Tab title=Mosaic
 > > 
-> > * La carga del mosaico para la resolucion default con la CPU dura en promedio **300ms**, mientras que con la GPU dura en promedio **130ms**. Mejora en un **230.76%**.
-> > * La carga del mosaico para la maxima resolucion con la CPU dura en promedio **1300ms**, mientras que con la GPU dura en promedio **400ms**. Mejora en un **325%**.
+> > * La carga del mosaico para la resolucion default con la CPU dura en promedio **300ms**, mientras que con la GPU dura en promedio **130ms**. Mejora en un **56.6%**.
+> > * La carga del mosaico para la maxima resolucion con la CPU dura en promedio **1300ms**, mientras que con la GPU dura en promedio **400ms**. Mejora en un **69.2%**.
 >
 
 <!-- # Conclusions & Future Work
