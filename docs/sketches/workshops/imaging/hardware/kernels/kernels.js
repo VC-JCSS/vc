@@ -82,7 +82,7 @@ function draw() {
     fill(255, 255, 255);
     textSize(32);
     text('Emboss', windowWidth/2 - 120, 30);
-    text('Top Sobel', windowWidth - 145, 30);
+    text('Top Sobel', windowWidth - 160, 30);
     text('Outline', windowWidth/2 - 100, windowHeight / 2 + 30);
     text('Sharpen', windowWidth - 140, windowHeight / 2 + 30);
 
