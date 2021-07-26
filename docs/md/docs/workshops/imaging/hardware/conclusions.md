@@ -2,14 +2,16 @@
 
 Con este ejercicio se notaron 2 ventajas que se tiene al utilizar shaders, la primera es que se pueden utilizar el mismo vertex y fragment shader tanto para imágenes como para videos (en gray scale y kernels), lo cual ahorra bastante tiempo y esfuerzo al programador. Esto gracias a que los shaders procesan las imágenes y los videos de igual forma.
 
-Adiciona a ello, notamos que el renderizado utilizando la GPU es mucho más eficiente computacionalmente con respecto al renderizado con la CPU. 
+Adicional a ello, notamos que el renderizado utilizando la GPU es mucho más eficiente computacionalmente con respecto al renderizado con la CPU. 
 Si bien la velocidad de la renderización con GPU depende completamente del poder de procesamiento que esta tenga, los siguientes valores ayudan a entender la diferencia de la eficiencia entre ambos métodos de renderización para cada uno de los apartados realizados:
 
 
 > :Tabs
 > > :Tab title=Gray Scale
 > >
-> > Holaaaaaaaaaaaaaaaaaaaaaaaaa
+> > * La carga de la imagen con la CPU dura en promedio **160 ms**, mientras que con la GPU dura en promedio **2 ms**. Mejora en un **99.87%**.
+> > * La carga inicial del video con la CPU dura en promedio ** ms**, mientras que con la GPU dura en promedio **13 ms**. Mejora en un **81.4%**.
+> > * La carga de cada frame del video con la CPU dura en promedio **1.5 ms**, mientras que con la GPU dura en promedio ** ms**. Mejora en un **99.5%**.
 > 
 > > :Tab title=Kernels
 > > 
@@ -32,7 +34,7 @@ Si bien la velocidad de la renderización con GPU depende completamente del pode
 >
 
 # Conclusions & Future Work
-
+<!--
 Se pueden apreciar varias caracteristicas comunes a las aplicaciones planteadas. La versatilidad de las aplicaciones es una caracteristica fundamental identificada. Inicialmente, el método de procesamiento del Kernel tiene distintas utilidades en sí mismo, ya que nos permite, además de aplicar filtros a las imágenes, obtener información fundamental de una imagen, facilitando así su estudio y análisis en otras ramas del análsis de estas. 
 <br/>
 <br/>
@@ -45,7 +47,7 @@ Esta última aplicación, que analiza una imagen y genera un mosaico de la misma
 * Si bien la distancia delta es una medida efectiva no deja de ser una simple distancia euclidiana, una mejora en el trabajo podría ser trabajar una medida más precisa de acuerdo con el contexto. 
 
 * Hacer uso de una API de pago mejoraría considerablemente la aplicación implementada, ya que permitiría personalizar un mosaico con una mayor gama de posibilidades. La implementación de una API que pueda proveer las imagenes solicitadas lograría el mismo resultado, según las pruebas realizadas. 
-
+-->
 > :ToCPrevNext
 
 <!--
