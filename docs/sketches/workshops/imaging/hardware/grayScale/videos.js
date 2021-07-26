@@ -9,7 +9,7 @@ let rgb = 4;
 
 function preload() {
     shaderVideo = loadShader("/vc/docs/sketches/workshops/imaging/hardware/grayScale/shader.vert", "/vc/docs/sketches/workshops/imaging/hardware/grayScale/grayScale.frag");
-    video = createVideo("/vc/docs/sketches/fingers.webm");
+    video = createVideo("/vc/docs/sketches/UseTheForce.mp4");
 }
 
 function mousePressed() {
@@ -46,14 +46,14 @@ function setup() {
 }
 
 function draw() {
-    //console.time("GrayScale video");
+    console.time("GrayScale video");
     filterVideo(pred, 1);
     filterVideo(negative, 2);
     filterVideo(luma, 3);
     filterVideo(rgb, 4);
 
     image(interfaz, 0, 0);
-    //console.timeEnd("GrayScale video");
+    console.timeEnd("GrayScale video");
 }
 
 function filterVideo(grayType, nVideo) {
